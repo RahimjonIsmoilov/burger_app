@@ -1,5 +1,8 @@
 // import 'package:burger_app/main_page/local_date/food_list.dart';
+// import 'package:burger_app/main_page/local_date/food_list.dart';
 import 'package:burger_app/main_page/widgets/food_list.dart';
+import 'package:burger_app/main_page/widgets/foodcard.dart';
+import 'package:burger_app/main_page/widgets/foods.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
@@ -87,31 +90,24 @@ class MainPage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontSize: 16),
                 ),
-                TextButton(
-                    style: const ButtonStyle(
-                        overlayColor: MaterialStatePropertyAll(Colors.white24)),
-                    onPressed: () {},
-                    child: Text(
-                      "Посмотреть все",
-                      style: TextStyle(
-                          color: maincolor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                    ))
+                Padding(
+                  padding: const EdgeInsets.only(top: 22, bottom: 12),
+                  child: TextButton(
+                      style: const ButtonStyle(
+                          overlayColor:
+                              MaterialStatePropertyAll(Colors.white24)),
+                      onPressed: () {},
+                      child: Text(
+                        "Посмотреть все",
+                        style: TextStyle(
+                            color: maincolor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
+                      )),
+                )
               ],
             ),
-            // Card(
-            //   elevation: 8,
-            //   child: GridView.builder(
-            //       padding: const EdgeInsets.all(12),
-            //       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            //           maxCrossAxisExtent: 120,
-            //           childAspectRatio: 3 / 2,
-            //           crossAxisSpacing: 10,
-            //           mainAxisSpacing: 10),
-            //       itemCount: favfoodlists.length,
-            //       itemBuilder: (_, int index) {}),
-            // )
+            const Foods()
           ],
         ),
       ),
