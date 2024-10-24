@@ -9,7 +9,7 @@ class Foodlist extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 120,
-      width: 350,
+      width: 360,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: favfoodlists.length,

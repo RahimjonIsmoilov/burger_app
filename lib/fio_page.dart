@@ -59,6 +59,7 @@ class FioPage extends StatelessWidget {
                   color: Colors.grey.shade800,
                   borderRadius: BorderRadius.circular(8)),
               child: TextField(
+                  style: const TextStyle(color: Colors.white, fontSize: 14),
                   cursorColor: maincolor,
                   decoration: InputDecoration(
                       hintText: "Введите имя",
@@ -75,6 +76,7 @@ class FioPage extends StatelessWidget {
                   color: Colors.grey.shade800,
                   borderRadius: BorderRadius.circular(8)),
               child: TextField(
+                  style: const TextStyle(color: Colors.white, fontSize: 14),
                   cursorColor: maincolor,
                   decoration: InputDecoration(
                       hintText: "Введите фамилию",

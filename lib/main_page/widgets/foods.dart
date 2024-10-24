@@ -8,11 +8,12 @@ class Foods extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 342,
-      height: 447,
+      width: 360,
+      height: 530,
       child: GridView.builder(
+        padding: EdgeInsets.all(0),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          childAspectRatio: 0.72,
+          childAspectRatio: 0.77,
           crossAxisCount: 2,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,

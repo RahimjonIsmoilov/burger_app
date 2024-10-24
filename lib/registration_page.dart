@@ -1,4 +1,5 @@
 import 'package:burger_app/begin_screen.dart';
+import 'package:burger_app/enter_page.dart';
 import 'package:burger_app/fio_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
@@ -157,12 +158,22 @@ class Registration_Page extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),
-                    Text(
-                      " Войти",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: maincolor),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const EnterPage(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        " Войти",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: maincolor),
+                      ),
                     ),
                   ],
                 ),

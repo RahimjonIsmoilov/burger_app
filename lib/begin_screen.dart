@@ -1,3 +1,4 @@
+import 'package:burger_app/enter_page.dart';
 import 'package:burger_app/registration_page.dart';
 import 'package:flutter/material.dart';
 
@@ -44,9 +45,10 @@ class Begin_screen extends StatelessWidget {
                   texcol: Colors.black,
                   tex: "Войти",
                   tap: () {
-                    Navigator.of(context).push(
+                    Navigator.push(
+                      context,
                       MaterialPageRoute(
-                        builder: (context) => const Registration_Page(),
+                        builder: (context) => const EnterPage(),
                       ),
                     );
                   },
@@ -90,7 +92,7 @@ class Buttons extends StatelessWidget {
   final Color col;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         tap();
       },

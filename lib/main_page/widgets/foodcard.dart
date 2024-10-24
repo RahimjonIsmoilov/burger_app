@@ -24,10 +24,12 @@ class FoodCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image(
-            image: AssetImage(fooddmodel.imgpath),
-            width: 129,
-            height: 99,
+          Center(
+            child: Image(
+              image: AssetImage(fooddmodel.imgpath),
+              width: 129,
+              height: 99,
+            ),
           ),
           Text(
             fooddmodel.name,

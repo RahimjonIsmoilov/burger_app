@@ -109,52 +109,58 @@ class EnterPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  height: 56,
-                  width: 153,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: Colors.black45),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.facebook,
-                        color: maincolor,
-                        size: 30,
-                      ),
-                      const Text(
-                        "  Facebook",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white),
-                      )
-                    ],
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: 56,
+                    width: 153,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.black45),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.facebook,
+                          color: maincolor,
+                          size: 30,
+                        ),
+                        const Text(
+                          "  Facebook",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-                Container(
-                  height: 56,
-                  width: 153,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: Colors.black45),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.g_mobiledata_rounded,
-                        color: maincolor,
-                        size: 48,
-                      ),
-                      const Text(
-                        "Google",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white),
-                      )
-                    ],
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: 56,
+                    width: 153,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.black45),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.g_mobiledata_rounded,
+                          color: maincolor,
+                          size: 48,
+                        ),
+                        const Text(
+                          "Google",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
