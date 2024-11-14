@@ -1,138 +1,77 @@
-import 'package:burger_app/main_page/widgets/food_list.dart';
-import 'package:burger_app/main_page/widgets/foods.dart';
+import 'package:burger_app/main_page/pages/favoritefood_page.dart';
+import 'package:burger_app/main_page/pages/food_page.dart';
+import 'package:burger_app/main_page/pages/order_detail_page.dart';
+import 'package:burger_app/main_page/pages/order_page.dart';
+import 'package:burger_app/main_page/pages/special_order_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  final items = [
+    Icon(
+      Icons.home_rounded,
+      size: 30,
+      color: maincol1,
+    ),
+    Icon(Icons.shopping_bag_rounded, size: 30, color: maincol1),
+    Icon(Icons.shopping_cart, size: 30, color: maincol1),
+    Icon(Icons.favorite_rounded, size: 30, color: maincol1),
+    Icon(Icons.add_circle, size: 30, color: maincol1),
+  ];
+
+  int index = 0;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(children: [
-        Container(
-          padding: const EdgeInsets.only(right: 16, left: 16),
-          color: maincol1,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 30),
-                child: Row(
-                  children: [
-                    const Text(
-                      "Привет, Максим",
-                      style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 83),
-                      height: 36,
-                      width: 36,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 2)),
-                      child: const Icon(
-                        Icons.search_rounded,
-                        color: Colors.white,
-                      ),
-                    ),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Image(
-                          image: AssetImage(
-                            "images/user.png",
-                          ),
-                          height: 36,
-                          width: 36,
-                        )),
-                  ],
-                ),
-              ),
-              Container(
-                width: 360,
-                height: 7,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: maincolor,
-                    border: Border.all(color: maincolor)),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "Ваши любимые товары",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Посмотреть все",
-                        style: TextStyle(color: maincolor),
-                      ))
-                ],
-              ),
-              const Foodlist(),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 15,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Все товары",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                    ),
-                    TextButton(
-                        style: const ButtonStyle(
-                            overlayColor:
-                                WidgetStatePropertyAll(Colors.white24)),
-                        onPressed: () {},
-                        child: Text(
-                          "Посмотреть все",
-                          style: TextStyle(
-                              color: maincolor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16),
-                        ))
-                  ],
-                ),
-              ),
-              const Foods(),
-            ],
-          ),
-        ),
-        Align(
-          alignment: const Alignment(0, 1),
-          child: CurvedNavigationBar(
-              index: 0,
-              color: maincolor,
-              backgroundColor: Colors.transparent,
-              buttonBackgroundColor: maincolor,
-              height: 60,
-              items: [
-                Icon(
-                  Icons.home_rounded,
-                  size: 30,
-                  color: maincol1,
-                ),
-                Icon(Icons.shopping_bag_rounded, size: 30, color: maincol1),
-                Icon(Icons.shopping_cart, size: 30, color: maincol1),
-                Icon(Icons.favorite_rounded, size: 30, color: maincol1),
-                Icon(Icons.add_circle, size: 30, color: maincol1),
-              ]),
-        )
-      ]),
+      backgroundColor: Colors.transparent,
+      bottomNavigationBar: CurvedNavigationBar(
+        index: index,
+        animationDuration: const Duration(milliseconds: 300),
+        color: maincolor,
+        backgroundColor: Colors.transparent,
+        buttonBackgroundColor: maincolor,
+        height: 60,
+        items: items,
+        onTap: (selectedIndex) {
+          setState(() {
+            index = selectedIndex;
+          });
+        },
+      ),
+      body: getSelectedWidget(index: index),
     );
+  }
+
+  Widget getSelectedWidget({required int index}) {
+    switch (index) {
+      case 0:
+        return const FoodPage();
+      case 1:
+        return const MyOrder();
+      case 2:
+        return const OrderDetailPage();
+
+      case 3:
+        return const FavoriteFoodPage();
+
+      case 4:
+        return const SpecialOrder();
+
+      default:
+        return const SizedBox(
+          child: Text(
+            "ishlamadi battar bo'l",
+            style: TextStyle(fontSize: 75),
+          ),
+        );
+    }
   }
 }

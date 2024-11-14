@@ -19,7 +19,7 @@ class FoodCard extends StatelessWidget {
       height: 220,
       width: 166,
       decoration: BoxDecoration(
-          color: Colors.grey.shade800,
+          color: maincol2,
           borderRadius: const BorderRadius.all(Radius.circular(16))),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class MyOrder extends StatelessWidget {
-  const MyOrder({super.key});
+class SpecialOrder extends StatelessWidget {
+  const SpecialOrder({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: TabBar(tabs: [
+    return const Column(
+      children: [
         Text("Все"),
         Text("Доставляется"),
         Text("Доставлено"),
-      ]),
+      ],
     );
   }
 }
