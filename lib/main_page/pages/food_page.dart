@@ -9,14 +9,17 @@ class FoodPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(right: 16, left: 16),
-      color: maincol1,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 30),
-            child: Row(
+    return Scaffold(
+      body: Container(
+        color: maincol1,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 30), // Yuqoridan bo'sh joy
+            // User va qidiruv paneli
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
                   "Привет, Максим",
@@ -25,93 +28,67 @@ class FoodPage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(left: 83),
-                  height: 36,
-                  width: 36,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.white, width: 2)),
-                  child: const Icon(
-                    Icons.search_rounded,
-                    color: Colors.white,
-                  ),
-                ),
-                IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProfilPage(),
-                        ),
-                      );
-                    },
-                    icon: const Image(
-                      image: AssetImage(
-                        "images/user.png",
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.search, color: Colors.white),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ProfilPage()),
+                        );
+                      },
+                      icon: const Image(
+                        image: AssetImage("images/user.png"),
+                        height: 36,
+                        width: 36,
                       ),
-                      height: 36,
-                      width: 36,
-                    )),
+                    ),
+                  ],
+                ),
               ],
             ),
-          ),
-          Container(
-            width: 360,
-            height: 7,
-            margin: const EdgeInsets.only(bottom: 10),
-            decoration: BoxDecoration(
+            const SizedBox(height: 10), // User va pastki chiziq orasidagi joy
+            Container(
+              width: double.infinity,
+              height: 7,
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 color: maincolor,
-                border: Border.all(color: maincolor)),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                "Ваши любимые товары",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
               ),
-              TextButton(
+            ),
+            const SizedBox(height: 20),
+            // "Ваши любимые товары" sarlavhasi
+            const Foodlist(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Ваши любимые товары",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
+                TextButton(
                   onPressed: () {},
                   child: Text(
                     "Посмотреть все",
                     style: TextStyle(color: maincolor),
-                  ))
-            ],
-          ),
-          const Foodlist(),
-          Padding(
-            padding: const EdgeInsets.only(top: 15, bottom: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  "Все товары",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
+                  ),
                 ),
-                TextButton(
-                    style: const ButtonStyle(
-                        overlayColor: WidgetStatePropertyAll(Colors.white24)),
-                    onPressed: () {},
-                    child: Text(
-                      "Посмотреть все",
-                      style: TextStyle(
-                          color: maincolor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                    ))
               ],
             ),
-          ),
-          const Foods(),
-        ],
+           
+            const Expanded(
+              child: Foods(), // GridView ichida oziq-ovqat kartalari
+            ),
+          ],
+        ),
       ),
     );
   }

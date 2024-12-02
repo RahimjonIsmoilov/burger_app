@@ -152,8 +152,8 @@ class ProfilPage extends StatelessWidget {
                   color: Colors.white),
             ),
             Container(
-              margin: EdgeInsets.only(top: 10),
-              padding: EdgeInsets.only(top: 18, right: 26, left: 22),
+              margin: const EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.only(top: 18, right: 26, left: 22),
               height: 82,
               width: 367,
               decoration: BoxDecoration(

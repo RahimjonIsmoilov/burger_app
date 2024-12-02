@@ -4,8 +4,8 @@ import 'package:burger_app/fio_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
-class Registration_Page extends StatelessWidget {
-  const Registration_Page({super.key});
+class RegistrationPage extends StatelessWidget {
+  const RegistrationPage({super.key});
 
   @override
   Widget build(BuildContext context) {

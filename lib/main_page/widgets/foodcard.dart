@@ -1,4 +1,5 @@
 import 'package:burger_app/main_page/models/fooddmodel.dart';
+import 'package:burger_app/main_page/pages/food__detail_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
@@ -8,35 +9,55 @@ class FoodCard extends StatelessWidget {
     required this.fooddmodel,
   });
   final Fooddmodel fooddmodel;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(
-        top: 6,
-        left: 14,
-        right: 14,
-      ),
-      height: 220,
-      width: 166,
-      decoration: BoxDecoration(
-          color: maincol2,
-          borderRadius: const BorderRadius.all(Radius.circular(16))),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: Image(
-              image: AssetImage(fooddmodel.imgpath),
-              width: 129,
-              height: 99,
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FoodDetail(
+              fooddmodel: Fooddmodel(
+                  description: fooddmodel.description,
+                  imgpath: fooddmodel.imgpath,
+                  name: fooddmodel.name,
+                  price: fooddmodel.price,
+                  weight: fooddmodel.weight),
             ),
           ),
-          Text(
-            fooddmodel.name,
-            style: const TextStyle(
-                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-          ),
-          SizedBox(
+        );
+      },
+      child: Container(
+        height: 220,
+        width: 160,
+        padding: const EdgeInsets.only(
+          top: 6,
+          left: 14,
+          right: 14,
+        ),
+        decoration: BoxDecoration(
+          color: maincol2,
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Image(
+                image: AssetImage(fooddmodel.imgpath),
+                width: 129,
+                height: 99,
+              ),
+            ),
+            Text(
+              fooddmodel.name,
+              style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+            SizedBox(
               width: 145,
               height: 50,
               child: Text(
@@ -48,50 +69,53 @@ class FoodCard extends StatelessWidget {
                   color: Colors.grey,
                   fontSize: 11,
                 ),
-              )),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                fooddmodel.price,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
               ),
-              Container(
-                width: 38,
-                height: 18,
-                decoration: const BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.all(Radius.circular(16))),
-                child: Center(
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  fooddmodel.price,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  width: 38,
+                  height: 18,
+                  decoration: const BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.all(Radius.circular(16))),
+                  child: Center(
                     child: Text(
-                  fooddmodel.weight,
-                  style: TextStyle(
-                      fontSize: 9,
-                      fontWeight: FontWeight.bold,
-                      color: maincol2),
-                )),
-              ),
-              InkWell(
-                onTap: () {},
-                child: Container(
-                  width: 34,
-                  height: 34,
-                  decoration: BoxDecoration(
-                    color: maincolor,
-                    borderRadius: const BorderRadius.all(Radius.circular(16)),
-                  ),
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.black,
+                      fooddmodel.weight,
+                      style: TextStyle(
+                          fontSize: 9,
+                          fontWeight: FontWeight.bold,
+                          color: maincol2),
+                    ),
                   ),
                 ),
-              )
-            ],
-          )
-        ],
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: 34,
+                    height: 34,
+                    decoration: BoxDecoration(
+                      color: maincolor,
+                      borderRadius: const BorderRadius.all(Radius.circular(16)),
+                    ),
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

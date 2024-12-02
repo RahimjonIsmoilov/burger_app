@@ -8,7 +8,6 @@ class MyOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      // Tablar soni
       length: 3,
       child: Container(
         width: 390,
@@ -140,7 +139,7 @@ class MyOrder extends StatelessWidget {
                               Container(
                                 height: 36,
                                 width: 36,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
                               ),

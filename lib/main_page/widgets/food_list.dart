@@ -8,16 +8,19 @@ class Foodlist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120,
-      width: 360,
+      height: 120, // Fixed height for the horizontal list
+      width: MediaQuery.of(context).size.width, // Fixed width for the list
       child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: favfoodlists.length,
-          itemBuilder: (context, index) {
-            return FavFod(
-              foodModel: favfoodlists[index],
-            );
-          }),
+        scrollDirection: Axis.horizontal, // Horizontal scroll direction
+        itemCount: favfoodlists.length, // Length of the favorite food list
+        itemBuilder: (context, index) {
+          // Returning the custom widget for each food item
+          return FavFod(
+            foodModel: favfoodlists[
+                index], // Passing the food model to the FavFod widget
+          );
+        },
+      ),
     );
   }
 }

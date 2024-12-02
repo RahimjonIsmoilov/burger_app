@@ -39,6 +39,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   curved_navigation_bar: ^1.0.6
   accordion: ^2.6.0
+  flutter_custom_carousel: ^0.1.0+1
+  flutter_staggered_animations: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +67,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
+    - images/circular_menu/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

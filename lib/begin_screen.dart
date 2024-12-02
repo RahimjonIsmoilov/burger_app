@@ -2,8 +2,8 @@ import 'package:burger_app/enter_page.dart';
 import 'package:burger_app/registration_page.dart';
 import 'package:flutter/material.dart';
 
-class Begin_screen extends StatelessWidget {
-  const Begin_screen({super.key});
+class BeginScreen extends StatelessWidget {
+  const BeginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,7 @@ class Begin_screen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Registration_Page(),
+                        builder: (context) => const RegistrationPage(),
                       ),
                     );
                   },

@@ -7,22 +7,27 @@ class Foods extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 360,
-      height: 439,
-      child: GridView.builder(
-        padding: const EdgeInsets.all(0),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          childAspectRatio: 0.77,
-          crossAxisCount: 2,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-        ),
-        itemCount: foods.length,
-        itemBuilder: (BuildContext context, int index) {
-          return FoodCard(fooddmodel: foods[index]);
-        },
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final int crossAxisCount =
+            (MediaQuery.of(context).size.width > 600 ? 3 : 2)
+                .floor(); // Ustunlar sonini hisoblash
+
+        return GridView.builder(
+          padding: const EdgeInsets.all(0),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount, // Hisoblangan ustunlar soni
+            crossAxisSpacing: 10, // Ustunlar orasidagi masofa
+            mainAxisSpacing: 10, // Qatorlar orasidagi masofa
+
+            childAspectRatio: 0.77, // Karta nisbatini saqlab qolish
+          ),
+          itemCount: foods.length,
+          itemBuilder: (BuildContext context, int index) {
+            return FoodCard(fooddmodel: foods[index]);
+          },
+        );
+      },
     );
   }
 }
