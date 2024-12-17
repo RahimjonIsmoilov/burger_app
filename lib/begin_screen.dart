@@ -13,30 +13,33 @@ class BeginScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Container(
-          height: 812,
-          width: 375,
           decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/burgerwaiter.jpg"))),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            image: DecorationImage(
+              image: AssetImage("images/burgerwaiter.jpg"),
+            ),
+          ),
+          child: ListView(
             children: [
               const Padding(
                 padding: EdgeInsets.only(top: 170),
-                child: Text("BURGER BAR",
-                    style: TextStyle(
-                        fontSize: 48,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white)),
+                child: Text(
+                  "BURGER BAR",
+                  style: TextStyle(
+                    fontSize: 48,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 300),
                 child: Text(
-                    "Вкусный бургер — это то,что вы заслуживаетездесь и сейчас",
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white)),
+                  "Вкусный бургер — это то,что вы заслуживаетездесь и сейчас",
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 32),
@@ -99,13 +102,21 @@ class Buttons extends StatelessWidget {
       child: Container(
         height: 60,
         decoration: BoxDecoration(
-            color: col,
-            borderRadius: const BorderRadius.all(Radius.circular(25))),
+          color: col,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(25),
+          ),
+        ),
         child: Align(
           alignment: Alignment.center,
-          child: Text(tex,
-              style: TextStyle(
-                  fontSize: 18, fontWeight: FontWeight.bold, color: texcol)),
+          child: Text(
+            tex,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: texcol,
+            ),
+          ),
         ),
       ),
     );

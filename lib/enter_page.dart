@@ -179,17 +179,18 @@ class EnterPage extends StatelessWidget {
                   )),
             ),
             Buttons(
-                col: maincolor,
-                texcol: Colors.black,
-                tex: "Войти",
-                tap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const MainPage(),
-                    ),
-                  );
-                })
+              col: maincolor,
+              texcol: Colors.black,
+              tex: "Войти",
+              tap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MainPage(),
+                  ),
+                );
+              },
+            )
           ],
         ),
       ),

@@ -65,21 +65,24 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      bottomNavigationBar: CurvedNavigationBar(
-        index: index,
-        animationDuration: const Duration(milliseconds: 300),
-        color: maincolor,
-        backgroundColor: Colors.transparent,
-        buttonBackgroundColor: maincolor,
-        height: 60,
-        items: items,
-        onTap: onNavBarItemSelected,
-      ),
+      // bottomNavigationBar: CurvedNavigationBar(
+      //   index: index,
+      //   animationDuration: const Duration(milliseconds: 300),
+      //   color: maincolor,
+      //   backgroundColor: Colors.transparent,
+      //   buttonBackgroundColor: maincolor,
+      //   height: 60,
+      //   items: items,
+      //   onTap: onNavBarItemSelected,
+      // ),
       body: SafeArea(
-        child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 300),
-          child: _pages[index],
-        ),
+        child: Center(
+          child: Text('test'),
+        )
+        // AnimatedSwitcher(
+        //   duration: const Duration(milliseconds: 300),
+        //   child: _pages[index],
+        // ),
       ),
     );
   }

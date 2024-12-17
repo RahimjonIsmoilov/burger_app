@@ -40,7 +40,6 @@ dependencies:
   curved_navigation_bar: ^1.0.6
   accordion: ^2.6.0
   flutter_custom_carousel: ^0.1.0+1
-  flutter_staggered_animations: ^1.0.0
 
 dev_dependencies:
   flutter_test:
