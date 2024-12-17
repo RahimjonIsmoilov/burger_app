@@ -39,7 +39,8 @@ class FoodPage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ProfilPage()),
+                            builder: (context) => const ProfilPage(),
+                          ),
                         );
                       },
                       icon: const Image(
@@ -84,10 +85,23 @@ class FoodPage extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 10,
+              height: 40,
               child: ListView.builder(
+                itemCount: 20,
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return Container();
+                  return Container(
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Text('test'),
+                  );
                 },
               ),
             ),
