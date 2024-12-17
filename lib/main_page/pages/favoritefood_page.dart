@@ -50,7 +50,7 @@ class _FavoriteFoodPageState extends State<FavoriteFoodPage> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(8),
                           child: Image.asset(
-                            favfood.imagepath,
+                            favfood.imgpath,
                             height: 80,
                             width: 80,
                             fit: BoxFit.cover,
@@ -73,7 +73,7 @@ class _FavoriteFoodPageState extends State<FavoriteFoodPage> {
                               ),
                               const SizedBox(height: 5),
                               Text(
-                                favfood.comment,
+                                favfood.description,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(

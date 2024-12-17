@@ -1,5 +1,6 @@
 import 'package:burger_app/begin_screen.dart';
 import 'package:burger_app/main_page/main_page.dart';
+import 'package:burger_app/main_page/pages/hotdog_carousel.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 

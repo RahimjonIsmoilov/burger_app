@@ -1,3 +1,4 @@
+import 'package:burger_app/main_page/local_date/order_list.dart';
 import 'package:burger_app/main_page/models/order_model.dart';
 import 'package:flutter/material.dart';
 
@@ -20,8 +21,20 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
 
   void ayir() {
     {
-      if (son > 0) son--;
-    }//bu ayrish uchun
+      if (son > 0) {
+        son--;
+        if (son == 0) {
+          setState(() {
+            ordermodels.remove(OrderModel(
+                name: widget.orderModel.name,
+                price: widget.orderModel.price,
+                weight: widget.orderModel.weight,
+                description: widget.orderModel.description,
+                imgpath: widget.orderModel.imgpath));
+          });
+        }
+      }
+    } //bu ayrish uchun
   }
 
   @override
@@ -37,7 +50,7 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
         children: [
           Image(
             image: AssetImage(
-              widget.orderModel.imagepath,
+              widget.orderModel.imgpath,
             ),
             width: 88,
             height: 78,
@@ -57,7 +70,7 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
                 width: 120,
                 child: Text(
                   maxLines: 1,
-                  widget.orderModel.comment,
+                  widget.orderModel.description,
                   style: const TextStyle(
                       color: Colors.grey,
                       fontSize: 12,

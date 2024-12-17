@@ -83,7 +83,14 @@ class FoodPage extends StatelessWidget {
                 ),
               ],
             ),
-           
+            SizedBox(
+              height: 10,
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return Container();
+                },
+              ),
+            ),
             const Expanded(
               child: Foods(), // GridView ichida oziq-ovqat kartalari
             ),

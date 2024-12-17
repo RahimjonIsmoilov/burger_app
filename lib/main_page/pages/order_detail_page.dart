@@ -11,7 +11,7 @@ class OrderDetailPage extends StatefulWidget {
 
 class _OrderDetailPageState extends State<OrderDetailPage> {
   int son = 1;
-
+  int totalprice = 0;
   void qosh() {
     {
       if (son < 50) son++;
@@ -99,10 +99,10 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                         ],
                       ),
                     ),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Общая стоимость",
                           style: TextStyle(
                               color: Colors.white,
@@ -110,8 +110,8 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                               fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          "₽570",
-                          style: TextStyle(
+                          "$totalprice So'm",
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.bold),
@@ -119,9 +119,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                       ],
                     ),
                     InkWell(
-                      onTap: () {
-                        
-                      },
+                      onTap: () {},
                       child: Container(
                         margin: const EdgeInsets.only(top: 24),
                         height: 48,

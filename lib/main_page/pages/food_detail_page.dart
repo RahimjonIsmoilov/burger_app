@@ -108,6 +108,32 @@ class _FoodDetailState extends State<FoodDetail> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Og'irligi",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white70,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      Text(
+                        "${widget.fooddmodel.weight} g",
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white70,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -170,40 +196,42 @@ class _FoodDetailState extends State<FoodDetail> {
                     )
                   ],
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 40),
-                  height: MediaQuery.of(context).size.height / 16,
-                  width: MediaQuery.of(context).size.width / 1.3,
-                  decoration: BoxDecoration(
-                      color: maincolor,
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(16))),
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        ordermodels.add(OrderModel(
-                            name: widget.fooddmodel.name,
-                            price: widget.fooddmodel.price,
-                            weight: widget.fooddmodel.weight,
-                            comment: widget.fooddmodel.description,
-                            imagepath: widget.fooddmodel.imgpath));
-                      });
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.shopping_cart,
-                          size: 30,
-                        ),
-                        Text(
-                          "Добавить в заказы ",
-                          style: TextStyle(
-                              color: maincol1,
-                              fontSize: 22,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ],
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 40),
+                    height: MediaQuery.of(context).size.height / 16,
+                    width: MediaQuery.of(context).size.width / 1.3,
+                    decoration: BoxDecoration(
+                        color: maincolor,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(16))),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          ordermodels.add(OrderModel(
+                              name: widget.fooddmodel.name,
+                              price: widget.fooddmodel.price,
+                              weight: widget.fooddmodel.weight,
+                              description: widget.fooddmodel.description,
+                              imgpath: widget.fooddmodel.imgpath));
+                        });
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.shopping_cart,
+                            size: 30,
+                          ),
+                          Text(
+                            "Добавить в заказы ",
+                            style: TextStyle(
+                                color: maincol1,
+                                fontSize: 22,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 )

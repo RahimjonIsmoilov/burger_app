@@ -1,17 +1,17 @@
-import 'package:burger_app/main_page/models/foodsmodel.dart';
+import 'package:burger_app/main_page/models/favfoodmodel.dart';
 
 List<FavFoodModel> favfoodlists = [
   FavFoodModel(
       name: "Чикен Бургер",
-      price: "₽160",
-      weight: "290g",
-      comment: "Котлета куриная, свежие овощи, сыр чеддер, соус для бургера",
-      imagepath: "images/burger1.png"),
+      price: "16000",
+      weight: "290",
+      description: "Котлета куриная, свежие овощи, сыр чеддер, соус для бургера",
+      imgpath: "images/burger1.png"),
   FavFoodModel(
-    comment: "Котлета свино-говяжья,свежие овощи, сыр чеддер,соус для бургера",
-    imagepath: "images/Blackburger.png",
+    description: "Котлета свино-говяжья,свежие овощи, сыр чеддер,соус для бургера",
+    imgpath: "images/Blackburger.png",
     name: "Блэк Бургер",
-    price: "₽190",
-    weight: "330g",
+    price: "19000",
+    weight: "330",
   )
 ];
