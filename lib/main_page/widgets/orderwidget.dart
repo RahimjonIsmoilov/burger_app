@@ -1,10 +1,10 @@
-import 'package:burger_app/main_page/local_date/order_list.dart';
-import 'package:burger_app/main_page/models/order_model.dart';
+import 'package:burger_app/main_page/local_date/foods_list.dart';
+import 'package:burger_app/main_page/models/fooddmodel.dart';
 import 'package:flutter/material.dart';
 
 class OrderDetailWidget extends StatefulWidget {
-  final OrderModel orderModel;
-  const OrderDetailWidget({super.key, required this.orderModel});
+  final Fooddmodel fooddmodel;
+  const OrderDetailWidget({super.key, required this.fooddmodel,});
 
   @override
   State<OrderDetailWidget> createState() => _OrderDetailWidgetState();
@@ -25,12 +25,12 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
         son--;
         if (son == 0) {
           setState(() {
-            ordermodels.remove(OrderModel(
-                name: widget.orderModel.name,
-                price: widget.orderModel.price,
-                weight: widget.orderModel.weight,
-                description: widget.orderModel.description,
-                imgpath: widget.orderModel.imgpath));
+            foods.remove(Fooddmodel(
+                name: widget.fooddmodel.name,
+                price: widget.fooddmodel.price,
+                weight: widget.fooddmodel.weight,
+                description: widget.fooddmodel.description,
+                imgpath: widget.fooddmodel.imgpath));
           });
         }
       }
@@ -50,7 +50,7 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
         children: [
           Image(
             image: AssetImage(
-              widget.orderModel.imgpath,
+              widget.fooddmodel.imgpath,
             ),
             width: 88,
             height: 78,
@@ -60,7 +60,7 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.orderModel.name,
+                widget.fooddmodel.name,
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -70,7 +70,7 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
                 width: 120,
                 child: Text(
                   maxLines: 1,
-                  widget.orderModel.description,
+                  widget.fooddmodel.description,
                   style: const TextStyle(
                       color: Colors.grey,
                       fontSize: 12,
@@ -78,7 +78,7 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
                 ),
               ),
               Text(
-                widget.orderModel.price,
+                widget.fooddmodel.price,
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,

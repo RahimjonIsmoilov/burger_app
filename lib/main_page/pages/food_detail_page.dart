@@ -1,6 +1,5 @@
-import 'package:burger_app/main_page/local_date/order_list.dart';
+import 'package:burger_app/main_page/local_date/foods_list.dart';
 import 'package:burger_app/main_page/models/fooddmodel.dart';
-import 'package:burger_app/main_page/models/order_model.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
@@ -88,18 +87,37 @@ class _FoodDetailState extends State<FoodDetail> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  widget.fooddmodel.name,
-                  style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      widget.fooddmodel.name,
+                      style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          widget.fooddmodel.liked = !widget.fooddmodel.liked;
+                        });
+                      },
+                      icon: Icon(
+                        widget.fooddmodel.liked
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color:
+                            widget.fooddmodel.liked ? Colors.red : Colors.white,
+                      ),
+                    )
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 17, bottom: 70),
                   child: Text(
-                    maxLines: 5,
                     widget.fooddmodel.description,
+                    maxLines: 5,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
@@ -149,10 +167,10 @@ class _FoodDetailState extends State<FoodDetail> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             IconButton(
-                              onPressed: qosh,
+                              onPressed: ayir,
                               icon: const Icon(
-                                Icons.add_circle,
-                                color: Colors.green,
+                                Icons.remove_circle,
+                                color: Colors.red,
                                 size: 24,
                               ),
                             ),
@@ -164,10 +182,10 @@ class _FoodDetailState extends State<FoodDetail> {
                                   color: Colors.white),
                             ),
                             IconButton(
-                              onPressed: ayir,
+                              onPressed: qosh,
                               icon: const Icon(
-                                Icons.remove_circle,
-                                color: Colors.red,
+                                Icons.add_circle,
+                                color: Colors.green,
                                 size: 24,
                               ),
                             ),
@@ -186,7 +204,7 @@ class _FoodDetailState extends State<FoodDetail> {
                               fontSize: 14),
                         ),
                         Text(
-                          widget.fooddmodel.price,
+                          "${(double.parse(widget.fooddmodel.price) * son).toStringAsFixed(2)} So'm",
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
@@ -208,12 +226,14 @@ class _FoodDetailState extends State<FoodDetail> {
                     child: InkWell(
                       onTap: () {
                         setState(() {
-                          ordermodels.add(OrderModel(
+                          foods.add(Fooddmodel(
+                              ordercount: son,
                               name: widget.fooddmodel.name,
                               price: widget.fooddmodel.price,
                               weight: widget.fooddmodel.weight,
                               description: widget.fooddmodel.description,
-                              imgpath: widget.fooddmodel.imgpath));
+                              imgpath: widget.fooddmodel.imgpath,
+                              liked: widget.fooddmodel.liked));
                         });
                       },
                       child: Row(
@@ -224,7 +244,7 @@ class _FoodDetailState extends State<FoodDetail> {
                             size: 30,
                           ),
                           Text(
-                            "Добавить в заказы ",
+                            "Добавить в заказы",
                             style: TextStyle(
                                 color: maincol1,
                                 fontSize: 22,

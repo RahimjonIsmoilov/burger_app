@@ -26,12 +26,11 @@ class _MainPageState extends State<MainPage> {
   ];
 
   void onNavBarItemSelected(int selectedIndex) {
-    // setState(() {
-    //   index = selectedIndex;
-    // });
+    setState(() {
+      index = selectedIndex;
+    });
   }
 
-  String ordercount = "0";
   @override
   Widget build(BuildContext context) {
     final List<Widget> items = [
@@ -41,25 +40,7 @@ class _MainPageState extends State<MainPage> {
       Icon(Icons.favorite_rounded, size: 30, color: maincol1),
       Icon(Icons.add_circle, size: 30, color: maincol1),
     ];
-    // Positioned(
-    //   top: 0,
-    //   right: 0,
-    //   child: Container(
-    //     padding: const EdgeInsets.only(bottom: 4),
-    //     height: 15,
-    //     width: 15,
-    //     decoration: const BoxDecoration(
-    //       color: Colors.green,
-    //       shape: BoxShape.circle,
-    //     ),
-    //     child: const Center(
-    //       child: Text(
-    //         "1",
-    //         style: TextStyle(fontSize: 12, fontWeight: FontWeight.w900),
-    //       ),
-    //     ),
-    //   ),
-    // )
+    
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -75,10 +56,6 @@ class _MainPageState extends State<MainPage> {
       ),
       body: SafeArea(
         child: _pages[index],
-        // AnimatedSwitcher(
-        //   duration: const Duration(milliseconds: 300),
-        //   child:_pages[index] ,
-        // ),
       ),
     );
   }

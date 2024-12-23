@@ -1,18 +1,21 @@
-import 'package:burger_app/main_page/models/favfoodmodel.dart';
 import 'package:burger_app/main_page/models/fooddmodel.dart';
-import 'package:burger_app/main_page/models/order_model.dart';
 import 'package:burger_app/main_page/pages/food_detail_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
-import '../local_date/order_list.dart';
-
-class FavFod extends StatelessWidget {
+class FavFod extends StatefulWidget {
   const FavFod({
     super.key,
     required this.foodModel,
   });
-  final FavFoodModel foodModel;
+  final Fooddmodel foodModel;
+
+  @override
+  State<FavFod> createState() => _FavFodState();
+}
+
+class _FavFodState extends State<FavFod> {
+  bool liked = true;
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +27,19 @@ class FavFod extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => FoodDetail(
                 fooddmodel: Fooddmodel(
-                    description: foodModel.description,
-                    imgpath: foodModel.imgpath,
-                    name: foodModel.name,
-                    price: foodModel.price,
-                    weight: foodModel.weight),
+                  description: widget.foodModel.description,
+                  imgpath: widget.foodModel.imgpath,
+                  name: widget.foodModel.name,
+                  price: widget.foodModel.price,
+                  weight: widget.foodModel.weight,
+                ),
               ),
             ),
           );
         },
         child: Container(
           margin: const EdgeInsets.only(right: 14),
+          padding: const EdgeInsets.only(right: 8, top: 8, bottom: 6),
           height: 120,
           width: 282,
           decoration: BoxDecoration(
@@ -42,81 +47,92 @@ class FavFod extends StatelessWidget {
           child: Row(
             children: [
               Image(
-                image: AssetImage(foodModel.imgpath),
+                image: AssetImage(widget.foodModel.imgpath),
                 width: 87,
                 height: 66,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 11),
+                  Text(
+                    widget.foodModel.name,
+                    style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
+                  ),
+                  SizedBox(
+                    width: 180,
                     child: Text(
-                      foodModel.name,
-                      style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white),
+                      maxLines: 3,
+                      widget.foodModel.description,
+                      style: const TextStyle(color: Colors.grey, fontSize: 12),
                     ),
                   ),
                   SizedBox(
                     width: 187,
-                    child: Text(
-                      foodModel.description,
-                      style: const TextStyle(color: Colors.grey, fontSize: 12),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        "${foodModel.price} so'm",
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Container(
-                        margin:
-                            const EdgeInsets.only(left: 20, bottom: 8, right: 10),
-                        alignment: Alignment.center,
-                        width: 38,
-                        height: 18,
-                        decoration: BoxDecoration(
-                            color: maincol1,
-                            shape: BoxShape.rectangle,
-                            borderRadius: BorderRadius.circular(16)),
-                        child: Text(
-                          "${foodModel.weight} g",
-                          style: TextStyle(
-                              color: maincol2,
-                              fontSize: 9,
-                              fontWeight: FontWeight.w500),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              widget.foodModel.price,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            const Text(
+                              " So'm",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          ordermodels.add(OrderModel(
-                            name: foodModel.name,
-                            price: foodModel.price,
-                            weight: foodModel.weight,
-                            description: foodModel.description,
-                            imgpath: foodModel.imgpath,
-                          ));
-                        },
-                        child: Container(
-                          height: 32,
-                          width: 32,
+                        Container(
+                          alignment: Alignment.center,
+                          width: 38,
+                          height: 18,
                           decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(width: 2, color: maincolor)),
-                          child: Icon(
-                            Icons.shopping_bag,
-                            color: maincolor,
-                            size: 20,
+                              color: maincol1,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.circular(16)),
+                          child: Text(
+                            "${widget.foodModel.weight} g",
+                            style: TextStyle(
+                                color: maincol2,
+                                fontSize: 9,
+                                fontWeight: FontWeight.w500),
                           ),
                         ),
-                      )
-                    ],
+                        InkWell(
+                          onTap: () {
+                            // ordermodels.add(OrderModel(
+                            //   name: widget.foodModel.name,
+                            //   price: widget.foodModel.price,
+                            //   weight: widget.foodModel.weight,
+                            //   description: widget.foodModel.description,
+                            //   imgpath: widget.foodModel.imgpath,
+                            // ));
+                          },
+                          child: Container(
+                            height: 32,
+                            width: 32,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(width: 2, color: maincolor)),
+                            child: Icon(
+                              Icons.shopping_bag,
+                              color: maincolor,
+                              size: 20,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   )
                 ],
               )
@@ -124,17 +140,20 @@ class FavFod extends StatelessWidget {
           ),
         ),
       ),
-      Padding(
-        padding: const EdgeInsets.only(
-          left: 230,
-        ),
+      Positioned(
+        top: 8,
+        right: 15,
         child: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.favorite,
-              color: Colors.red,
-              size: 19,
-            )),
+          onPressed: () {
+            setState(() {
+              liked = !liked;
+            });
+          },
+          icon: Icon(
+            liked ? Icons.favorite : Icons.favorite_border,
+            color: liked ? Colors.red : Colors.white,
+          ),
+        ),
       ),
     ]);
   }

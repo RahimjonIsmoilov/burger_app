@@ -18,37 +18,24 @@ import 'package:flutter_custom_carousel/flutter_custom_carousel.dart';
 /// Please note: to keep things simple, all demos were built for portrait mode
 /// on mobile handsets, without a lot of effort or testing for responsiveness.
 
-class CircularMenuView extends StatefulWidget {
-  const CircularMenuView({super.key});
+class PizzaCircularMenu extends StatefulWidget {
+  const PizzaCircularMenu({super.key});
 
   @override
-  State<CircularMenuView> createState() => _CircularMenuViewState();
+  State<PizzaCircularMenu> createState() => _PizzaCircularMenuState();
 }
 
-class _CircularMenuViewState extends State<CircularMenuView> {
+class _PizzaCircularMenuState extends State<PizzaCircularMenu> {
   final List<_ToppingData> _toppings = [
     _ToppingData('bun', inMenu: false, added: true),
-    _ToppingData('lettuce', added: true),
-    _ToppingData('burger', inMenu: false, added: true),
-    _ToppingData('cheese', added: true),
+    _ToppingData('tomato', added: true),
     _ToppingData('bacon'),
     _ToppingData('tomatoes'),
     _ToppingData('onions'),
     _ToppingData('pickles'),
     _ToppingData('egg'),
-    _ToppingData('sauce', added: true),
-    _ToppingData('ketchup', added: true),
-    _ToppingData('mustard'),
   ];
-
-  List<ProductModel> products = List.filled(
-    0,
-    growable: true,
-    ProductModel(
-      cost: 500,
-      name: "Pishloq",
-    ),
-  );
+  List<ProductModel> products = [];
 
   @override
   Widget build(BuildContext context) {
@@ -91,8 +78,8 @@ class _CircularMenuViewState extends State<CircularMenuView> {
           child: CustomCarousel(
             // The carousel will have 7 items total: The 1 selected item at the front, and
             // 3 items before (clockwise) and after (counter-clockwise) it:
-            itemCountBefore: 3,
-            itemCountAfter: 3,
+            itemCountBefore: 1,
+            itemCountAfter: 1,
             // The items will start centered, and our effects will move them from there:
             alignment: Alignment.center,
             // The user will interact with horizontal scroll interactions (ex. swipe left/right):
@@ -120,12 +107,13 @@ class _CircularMenuViewState extends State<CircularMenuView> {
                   ..scale(scale),
                 alignment: Alignment.center,
                 child: ImageFiltered(
-                    enabled: blur > 1.1,
-                    imageFilter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-                    child: Opacity(
-                      opacity: scale,
-                      child: child,
-                    )),
+                  enabled: blur > 1.1,
+                  imageFilter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+                  child: Opacity(
+                    opacity: scale,
+                    child: child,
+                  ),
+                ),
               );
             },
             children: toppings,
@@ -167,12 +155,15 @@ class _CircularMenuViewState extends State<CircularMenuView> {
     List<Widget> toppings = [];
     for (_ToppingData t in _toppings) {
       if (!t.added) continue;
-      toppings.add(Image.asset('images/circular_menu/${t.id}.png'));
+      toppings.add(Image.asset(
+        'images/pitsa_circiular/${t.id}.png',
+        width: 450,
+      ));
     }
 
     return IgnorePointer(
       child: Align(
-        alignment: const Alignment(0, -1.1),
+        alignment: const Alignment(0, -0.9),
         child: Stack(children: toppings),
       ),
     );
@@ -180,7 +171,7 @@ class _CircularMenuViewState extends State<CircularMenuView> {
 
   Widget _buildToppingIcon(_ToppingData topping, double width) {
     Widget widget = Image.asset(
-      'images/circular_menu/icon-${topping.id}.png',
+      'images/pitsa_circiular/icon-${topping.id}.png',
       width: width,
     );
     if (topping.added) {

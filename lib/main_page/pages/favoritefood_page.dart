@@ -1,4 +1,4 @@
-import 'package:burger_app/main_page/local_date/food_list.dart';
+import 'package:burger_app/main_page/local_date/foods_list.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
@@ -33,9 +33,9 @@ class _FavoriteFoodPageState extends State<FavoriteFoodPage> {
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: favfoodlists.length,
+                itemCount: foods.length,
                 itemBuilder: (context, index) {
-                  final favfood = favfoodlists[index];
+                  final favfood = foods[index];
                   return Container(
                     margin: const EdgeInsets.only(bottom: 10),
                     padding: const EdgeInsets.all(10),

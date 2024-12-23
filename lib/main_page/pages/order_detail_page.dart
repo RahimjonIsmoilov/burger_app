@@ -1,3 +1,4 @@
+import 'package:burger_app/main_page/pages/pitsa_carousel.dart';
 import 'package:burger_app/main_page/widgets/orders.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
@@ -119,7 +120,14 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                       ],
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PizzaCircularMenu(),
+                          ),
+                        );
+                      },
                       child: Container(
                         margin: const EdgeInsets.only(top: 24),
                         height: 48,

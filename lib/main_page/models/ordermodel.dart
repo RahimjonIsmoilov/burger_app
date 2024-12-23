@@ -1,4 +1,4 @@
-class Fooddmodel {
+class OrderModel {
   int? ordercount = 0;
   bool liked;
   final String imgpath;
@@ -6,7 +6,7 @@ class Fooddmodel {
   final String description;
   final String price;
   final String weight;
-  Fooddmodel({
+  OrderModel({
     required this.imgpath,
     required this.name,
     required this.description,

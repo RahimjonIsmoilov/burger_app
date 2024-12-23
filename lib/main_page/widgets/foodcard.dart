@@ -1,6 +1,5 @@
-import 'package:burger_app/main_page/local_date/order_list.dart';
 import 'package:burger_app/main_page/models/fooddmodel.dart';
-import 'package:burger_app/main_page/models/order_model.dart';
+import 'package:burger_app/main_page/pages/food_detail_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
@@ -15,12 +14,12 @@ class FoodCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => FoodDetail(fooddmodel: fooddmodel),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FoodDetail(fooddmodel: fooddmodel),
+          ),
+        );
       },
       child: Container(
         height: 220,
