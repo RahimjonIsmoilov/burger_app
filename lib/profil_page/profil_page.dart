@@ -12,12 +12,12 @@ class ProfilPage extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 80,
         leadingWidth: 70,
-        title: const Padding(
-          padding: EdgeInsets.only(top: 20),
+        title:  Padding(
+          padding: const EdgeInsets.only(top: 20),
           child: Text(
             "Профиль",
             style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                fontSize: 20, fontWeight: FontWeight.bold, color: whitetext),
           ),
         ),
         centerTitle: true,
@@ -35,10 +35,10 @@ class ProfilPage extends StatelessWidget {
               color: maincolor,
               borderRadius: BorderRadius.circular(8.0),
             ),
-            child: const Icon(
+            child:  Icon(
               Icons.arrow_back,
               size: 30,
-              color: Colors.white,
+              color: whitetext,
             ),
           ),
         ),
@@ -50,7 +50,7 @@ class ProfilPage extends StatelessWidget {
           children: [
             Center(
               child: Container(
-                width: 367,
+                width: MediaQuery.of(context).size.width,
                 height: 96,
                 margin: const EdgeInsets.only(top: 48, bottom: 20),
                 decoration: BoxDecoration(
@@ -62,7 +62,7 @@ class ProfilPage extends StatelessWidget {
                       backgroundImage: AssetImage("images/user.png"),
                       maxRadius: 28,
                     ),
-                    const Column(
+                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -71,9 +71,9 @@ class ProfilPage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
-                              color: Colors.white),
+                              color: whitetext),
                         ),
-                        Text(
+                        const Text(
                           "rahimjoni360@mail.ru",
                           style: TextStyle(
                               fontSize: 12,
@@ -93,16 +93,16 @@ class ProfilPage extends StatelessWidget {
                 ),
               ),
             ),
-            const Text(
+             Text(
               "Общее",
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white),
+                  color: whitetext),
             ),
             Container(
               height: 272,
-              width: 367,
+              width: MediaQuery.of(context).size.width,
               margin: const EdgeInsets.only(top: 10, bottom: 37),
               padding: const EdgeInsets.only(top: 28, left: 22, right: 26),
               decoration: BoxDecoration(
@@ -144,18 +144,18 @@ class ProfilPage extends StatelessWidget {
                 ],
               ),
             ),
-            const Text(
+             Text(
               "Больше",
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white),
+                  color: whitetext),
             ),
             Container(
               margin: const EdgeInsets.only(top: 10),
               padding: const EdgeInsets.only(top: 18, right: 26, left: 22),
               height: 82,
-              width: 367,
+              width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   color: maincol2, borderRadius: BorderRadius.circular(16)),
               child: SetList(

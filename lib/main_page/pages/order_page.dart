@@ -18,18 +18,18 @@ class MyOrder extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   "My Order",
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                      color: whitetext),
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.search_rounded,
-                    color: Colors.white,
+                    color: whitetext,
                   ),
                 ),
               ],
@@ -38,8 +38,8 @@ class MyOrder extends StatelessWidget {
               dividerColor: Colors.transparent,
               indicatorSize: TabBarIndicatorSize.tab,
               indicatorPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-              labelColor: Colors.white,
-              unselectedLabelColor: Colors.white,
+              labelColor: whitetext,
+              unselectedLabelColor: whitetext,
               indicator: BoxDecoration(
                 border: Border.all(width: 2),
                 shape: BoxShape.rectangle,
@@ -82,8 +82,7 @@ class MyOrder extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 620,
+            Expanded(
               child: Accordion(
                 headerPadding: const EdgeInsets.all(0),
                 paddingBetweenClosedSections: 31,
@@ -93,9 +92,9 @@ class MyOrder extends StatelessWidget {
                     headerBackgroundColorOpened: maincol1,
                     contentBackgroundColor: maincol1,
                     contentBorderColor: maincolor,
-                    rightIcon: const Icon(
+                    rightIcon: Icon(
                       Icons.keyboard_arrow_down_outlined,
-                      color: Colors.white,
+                      color: whitetext,
                       size: 28,
                     ),
                     leftIcon: Container(
@@ -111,21 +110,21 @@ class MyOrder extends StatelessWidget {
                         color: maincol1,
                       ),
                     ),
-                    header: const Column(
+                    header: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Заказ ID #035912",
                           style: TextStyle(
                               fontSize: 12,
-                              color: Colors.white,
+                              color: whitetext,
                               fontWeight: FontWeight.w600),
                         ),
                         Text(
                           "4 товара - Доставляется",
                           style: TextStyle(
                               fontSize: 10,
-                              color: Colors.white,
+                              color: whitetext,
                               fontWeight: FontWeight.w400),
                         ),
                       ],

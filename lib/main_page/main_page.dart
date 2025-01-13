@@ -1,6 +1,6 @@
+import 'package:burger_app/main_page/pages/selec_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:burger_app/main_page/pages/hotdog_carousel.dart';
 import 'package:burger_app/main_page/pages/favoritefood_page.dart';
 import 'package:burger_app/main_page/pages/food_page.dart';
 import 'package:burger_app/main_page/pages/order_detail_page.dart';
@@ -17,12 +17,12 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int index = 0;
 
-  final List<Widget> _pages = const [
-    FoodPage(),
-    MyOrder(),
-    OrderDetailPage(),
-    FavoriteFoodPage(),
-    CircularMenuView(),
+  final List<Widget> _pages = [
+    const FoodPage(),
+    const MyOrder(),
+    const OrderDetailPage(),
+    const FavoriteFoodPage(),
+    SelecProductPage(),
   ];
 
   void onNavBarItemSelected(int selectedIndex) {
@@ -40,10 +40,9 @@ class _MainPageState extends State<MainPage> {
       Icon(Icons.favorite_rounded, size: 30, color: maincol1),
       Icon(Icons.add_circle, size: 30, color: maincol1),
     ];
-    
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: maincol1,
       bottomNavigationBar: CurvedNavigationBar(
         index: index,
         animationDuration: const Duration(milliseconds: 300),

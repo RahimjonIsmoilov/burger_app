@@ -1,4 +1,4 @@
-import 'package:burger_app/main_page/models/fooddmodel.dart';
+import 'package:burger_app/main_page/api/product_model.dart';
 import 'package:burger_app/main_page/pages/food_detail_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 class FoodCard extends StatelessWidget {
   const FoodCard({
     super.key,
-    required this.fooddmodel,
+    required this.productmodel,
+    required this.index,
   });
-  final Fooddmodel fooddmodel;
+  final ProductModel productmodel;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,10 @@ class FoodCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => FoodDetail(fooddmodel: fooddmodel),
+            builder: (context) => FoodDetail(
+              productmodel: productmodel,
+              index: index,
+            ),
           ),
         );
       },
@@ -37,24 +42,30 @@ class FoodCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: Image(
-                image: AssetImage(fooddmodel.imgpath),
-                width: 129,
-                height: 99,
+              child: Image.network(
+                "http://167.235.222.200:2003/images/${productmodel.image}",
+                width: 150,
+                height: 120,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(
+                    Icons.image_not_supported,
+                    size: 50,
+                    color: Colors.grey,
+                  );
+                },
               ),
             ),
             Text(
-              fooddmodel.name,
-              style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+              productmodel.name!,
+              maxLines: 1,
+              style: TextStyle(
+                  fontSize: 18, fontWeight: FontWeight.bold, color: whitetext),
             ),
             SizedBox(
               width: 145,
               height: 50,
               child: Text(
-                fooddmodel.description,
+                productmodel.name!,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 3,
                 style: const TextStyle(
@@ -68,9 +79,9 @@ class FoodCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  fooddmodel.price,
-                  style: const TextStyle(
-                      color: Colors.white,
+                  "${productmodel.price}",
+                  style: TextStyle(
+                      color: whitetext,
                       fontSize: 16,
                       fontWeight: FontWeight.bold),
                 ),
@@ -82,7 +93,7 @@ class FoodCard extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(16))),
                   child: Center(
                     child: Text(
-                      "${fooddmodel.weight} g",
+                      "${productmodel.price} g",
                       style: TextStyle(
                           fontSize: 9,
                           fontWeight: FontWeight.bold,

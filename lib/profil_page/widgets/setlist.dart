@@ -36,10 +36,10 @@ class SetList extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white),
+                        color: whitetext),
                   ),
                   Text(
                     description,
@@ -54,9 +54,9 @@ class SetList extends StatelessWidget {
           ),
           IconButton(
               onPressed: () {},
-              icon: const Icon(
+              icon: Icon(
                 Icons.navigate_next_rounded,
-                color: Colors.white,
+                color: maincolor,
                 size: 32,
               ))
         ],

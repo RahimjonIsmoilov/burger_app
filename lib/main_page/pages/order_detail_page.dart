@@ -1,3 +1,5 @@
+import 'package:burger_app/main_page/local_date/foods_list.dart';
+import 'package:burger_app/main_page/models/fooddmodel.dart';
 import 'package:burger_app/main_page/pages/pitsa_carousel.dart';
 import 'package:burger_app/main_page/widgets/orders.dart';
 import 'package:burger_app/varible.dart';
@@ -19,9 +21,17 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
     } //bu qo'shish uchun
   }
 
+  late final Fooddmodel fooddModel;
   void ayir() {
     {
       if (son > 0) son--;
+      if (son == 0) {
+        setState(() {
+          foods.removeWhere(
+            (foods) => foods.name == fooddModel.name,
+          );
+        });
+      }
     } //bu ayrish uchun
   }
 
@@ -31,27 +41,27 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: maincol1,
         body: Container(
           margin: EdgeInsets.all(screenWidth * 0.04), // Dynamic margin
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Text(
                   "Buyurtma tarkibi",
                   style: TextStyle(
-                      color: Colors.white,
+                      color: whitetext,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              const Expanded(child: Orders()),
+              Expanded(child: Orders()),
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Colors.grey[900],
+                  color: maincol2,
                   borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(32),
                     topLeft: Radius.circular(32),
@@ -59,41 +69,41 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                 ),
                 child: Column(
                   children: [
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           "Стоимость всех товаров",
                           style: TextStyle(
-                              color: Colors.white,
+                              color: whitetext,
                               fontSize: 14,
                               fontWeight: FontWeight.w400),
                         ),
                         Text(
                           "₽540",
                           style: TextStyle(
-                              color: Colors.white,
+                              color: whitetext,
                               fontSize: 14,
                               fontWeight: FontWeight.w400),
                         ),
                       ],
                     ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 14),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             "Чаевые курьеру",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: whitetext,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
                             "₽30",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: whitetext,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400),
                           ),
@@ -103,17 +113,17 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                        Text(
                           "Общая стоимость",
                           style: TextStyle(
-                              color: Colors.white,
+                              color: whitetext,
                               fontSize: 14,
                               fontWeight: FontWeight.bold),
                         ),
                         Text(
                           "$totalprice So'm",
-                          style: const TextStyle(
-                              color: Colors.white,
+                          style: TextStyle(
+                              color: whitetext,
                               fontSize: 16,
                               fontWeight: FontWeight.bold),
                         ),
@@ -136,11 +146,11 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                           color: maincolor,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
                             "To'lov",
                             style: TextStyle(
-                                color: Colors.black,
+                                color: maincol1,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold),
                           ),

@@ -1,5 +1,5 @@
-import 'package:burger_app/begin_screen.dart';
-import 'package:burger_app/congrulations_page.dart';
+import 'package:burger_app/registration_page/begin_screen.dart';
+import 'package:burger_app/registration_page/congrulations_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
@@ -29,21 +29,21 @@ class LocationPage extends StatelessWidget {
                   color: maincolor,
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.arrow_back,
                   size: 30,
-                  color: Colors.white,
+                  color: whitetext,
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 38, bottom: 20),
+            Padding(
+              padding: const EdgeInsets.only(top: 38, bottom: 20),
               child: Text(
                 "Укажите свое местоположение",
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: whitetext),
               ),
             ),
             const Text(
@@ -71,9 +71,9 @@ class LocationPage extends StatelessWidget {
                         color: maincolor,
                         size: 32,
                       ),
-                      const Text(
+                      Text(
                         "Ваше местоположение",
-                        style: TextStyle(color: Colors.white, fontSize: 14),
+                        style: TextStyle(color: whitetext, fontSize: 14),
                       )
                     ],
                   ),
@@ -82,7 +82,7 @@ class LocationPage extends StatelessWidget {
                   ),
                   Buttons(
                       col: Colors.grey,
-                      texcol: Colors.white,
+                      texcol: whitetext,
                       tex: "Указать местоположение",
                       tap: () {})
                 ],

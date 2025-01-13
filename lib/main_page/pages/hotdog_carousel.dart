@@ -1,22 +1,10 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:burger_app/main_page/models/product_model.dart';
+import 'package:burger_app/main_page/api/product_model.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_carousel/flutter_custom_carousel.dart';
-
-/// Example showing a circular menu for selecting burger toppings.
-///
-/// Demonstrates:
-/// - a complex [CustomCarousel.effectsBuilder] that does not use [Animate]
-/// - carousel items with interactions that affect view state
-///
-/// Check out the code comments on `_buildCarousel` for information on how
-/// everything works.
-///
-/// Please note: to keep things simple, all demos were built for portrait mode
-/// on mobile handsets, without a lot of effort or testing for responsiveness.
 
 class CircularMenuView extends StatefulWidget {
   const CircularMenuView({super.key});
@@ -28,27 +16,30 @@ class CircularMenuView extends StatefulWidget {
 class _CircularMenuViewState extends State<CircularMenuView> {
   final List<_ToppingData> _toppings = [
     _ToppingData('bun', inMenu: false, added: true),
-    _ToppingData('lettuce', added: true),
+    _ToppingData(
+      'lettuce',
+    ),
     _ToppingData('burger', inMenu: false, added: true),
-    _ToppingData('cheese', added: true),
+    _ToppingData(
+      'cheese',
+    ),
     _ToppingData('bacon'),
     _ToppingData('tomatoes'),
     _ToppingData('onions'),
     _ToppingData('pickles'),
     _ToppingData('egg'),
-    _ToppingData('sauce', added: true),
-    _ToppingData('ketchup', added: true),
+    _ToppingData(
+      'sauce',
+    ),
+    _ToppingData(
+      'ketchup',
+    ),
     _ToppingData('mustard'),
   ];
 
-  List<ProductModel> products = List.filled(
-    0,
-    growable: true,
-    ProductModel(
-      cost: 500,
-      name: "Pishloq",
-    ),
-  );
+  List products = [
+    
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -86,8 +77,9 @@ class _CircularMenuViewState extends State<CircularMenuView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const BackButton(),
         Expanded(
-          flex: 7,
+          flex: 4,
           child: CustomCarousel(
             // The carousel will have 7 items total: The 1 selected item at the front, and
             // 3 items before (clockwise) and after (counter-clockwise) it:
@@ -131,34 +123,56 @@ class _CircularMenuViewState extends State<CircularMenuView> {
             children: toppings,
           ),
         ),
-        const Expanded(
-          flex: 1,
+        Expanded(
+          flex: 4,
           child: Padding(
-            padding: EdgeInsets.only(top: 20, left: 20),
-            child: Text(
-              "Mahsulotlar ro'yhati",
-              style: TextStyle(
-                  fontSize: 28,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400),
+            padding: const EdgeInsets.only(top: 70, left: 20, right: 20),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Text(
+                    "Mahsulotlar ro'yhati",
+                    style: TextStyle(
+                        fontSize: 28,
+                        color: whitetext,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ),
+                SizedBox(
+                  height: 170,
+                  width: 500,
+                  child: ListView.builder(
+                    itemCount: products.length,
+                    itemBuilder: (context, index) {
+                      return AddList(
+                        model: products[index],
+                      );
+                    },
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 24),
+                  height: 48,
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  decoration: BoxDecoration(
+                    color: maincolor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Savatga Qo'shish",
+                      style: TextStyle(
+                          color: maincol1,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: SizedBox(
-            height: 194,
-            width: 500,
-            child: ListView.builder(
-              itemCount: products.length,
-              itemBuilder: (context, index) {
-                return AddList(
-                  model: products[index],
-                );
-              },
-            ),
-          ),
-        )
       ],
     );
   }
@@ -198,7 +212,7 @@ class _CircularMenuViewState extends State<CircularMenuView> {
             products.removeWhere((product) => product.name == topping.id);
           } else {
             // Yangi topping qo'shish
-            products.add(ProductModel(cost: 150, name: topping.id));
+            // products.add(ProductModel(cost: 150, name: topping.id));
           }
         });
       },
@@ -212,7 +226,7 @@ class _CircularMenuViewState extends State<CircularMenuView> {
         color: Color(0xFF284E30),
         shape: BoxShape.circle,
       ),
-      child: const Icon(Icons.check_circle, color: Colors.white, size: 48),
+      child: Icon(Icons.check_circle, color: whitetext, size: 48),
     );
   }
 }
@@ -226,17 +240,17 @@ class AddList extends StatelessWidget {
   final ProductModel model;
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          model.name,
-          style: const TextStyle(color: Colors.white, fontSize: 18),
-        ),
-        Text(
-          model.cost.toString(),
-          style: const TextStyle(color: Colors.white, fontSize: 18),
-        )
+        // Text(
+        //   model.name,
+        //   style: TextStyle(color: whitetext, fontSize: 18),
+        // ),
+        // Text(
+        //   model.cost.toString(),
+        //   style: TextStyle(color: whitetext, fontSize: 18),
+        // )
       ],
     );
   }

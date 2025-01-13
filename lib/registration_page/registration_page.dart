@@ -1,6 +1,6 @@
-import 'package:burger_app/begin_screen.dart';
-import 'package:burger_app/enter_page.dart';
-import 'package:burger_app/fio_page.dart';
+import 'package:burger_app/registration_page/begin_screen.dart';
+import 'package:burger_app/registration_page/enter_page.dart';
+import 'package:burger_app/registration_page/fio_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
@@ -21,20 +21,20 @@ class RegistrationPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 100, bottom: 38),
+              Padding(
+                padding: const EdgeInsets.only(top: 100, bottom: 38),
                 child: Text("BURGER BAR",
                     style: TextStyle(
                         fontSize: 48,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white)),
+                        color: whitetext)),
               ),
-              const Text(
+              Text(
                 "Создать аккаунт",
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: whitetext),
               ),
               const Text(
                 "Зарегистрируйтесь, чтобы продолжить",
@@ -49,11 +49,11 @@ class RegistrationPage extends StatelessWidget {
                 height: 56,
                 decoration: const BoxDecoration(color: Colors.black87),
                 child: TextField(
-                  cursorColor: Colors.white,
+                  cursorColor: whitetext,
                   decoration: InputDecoration(
                     hintText: "rahimjon@gmail.com",
-                    hintStyle: const TextStyle(
-                        color: Colors.white,
+                    hintStyle: TextStyle(
+                        color: whitetext,
                         fontSize: 14,
                         fontWeight: FontWeight.bold),
                     prefixIcon: Icon(
@@ -67,7 +67,7 @@ class RegistrationPage extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
-                  style: const TextStyle(color: Colors.white, fontSize: 14),
+                  style: TextStyle(color: whitetext, fontSize: 14),
                 ),
               ),
               Container(
@@ -77,11 +77,11 @@ class RegistrationPage extends StatelessWidget {
                 decoration: const BoxDecoration(color: Colors.black87),
                 child: TextField(
                   keyboardType: TextInputType.phone,
-                  cursorColor: Colors.white,
+                  cursorColor: whitetext,
                   decoration: InputDecoration(
                     hintText: "+998901234567",
-                    hintStyle: const TextStyle(
-                        color: Colors.white,
+                    hintStyle: TextStyle(
+                        color: whitetext,
                         fontSize: 14,
                         fontWeight: FontWeight.bold),
                     prefixIcon: Icon(
@@ -95,7 +95,7 @@ class RegistrationPage extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
-                  style: const TextStyle(color: Colors.white, fontSize: 14),
+                  style: TextStyle(color: whitetext, fontSize: 14),
                 ),
               ),
               Container(
@@ -105,11 +105,11 @@ class RegistrationPage extends StatelessWidget {
                 decoration: const BoxDecoration(color: Colors.black87),
                 child: TextField(
                   keyboardType: TextInputType.visiblePassword,
-                  cursorColor: Colors.white,
+                  cursorColor: whitetext,
                   decoration: InputDecoration(
                     hintText: "* * * * * * * *",
-                    hintStyle: const TextStyle(
-                        color: Colors.white,
+                    hintStyle: TextStyle(
+                        color: whitetext,
                         fontSize: 14,
                         fontWeight: FontWeight.bold),
                     suffixIcon: IconButton(
@@ -129,7 +129,7 @@ class RegistrationPage extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
-                  style: const TextStyle(color: Colors.white, fontSize: 14),
+                  style: TextStyle(color: whitetext, fontSize: 14),
                 ),
               ),
               Padding(
@@ -151,12 +151,12 @@ class RegistrationPage extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 54, top: 13),
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       "Уже есть аккаунт? ",
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          color: whitetext),
                     ),
                     TextButton(
                       onPressed: () {

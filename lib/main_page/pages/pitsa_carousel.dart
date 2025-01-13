@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:burger_app/main_page/models/product_model.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_carousel/flutter_custom_carousel.dart';
@@ -35,7 +34,7 @@ class _PizzaCircularMenuState extends State<PizzaCircularMenu> {
     _ToppingData('pickles'),
     _ToppingData('egg'),
   ];
-  List<ProductModel> products = [];
+  List products = [];
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +72,7 @@ class _PizzaCircularMenuState extends State<PizzaCircularMenu> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const BackButton(),
         Expanded(
           flex: 7,
           child: CustomCarousel(
@@ -119,34 +119,32 @@ class _PizzaCircularMenuState extends State<PizzaCircularMenu> {
             children: toppings,
           ),
         ),
-        const Expanded(
+        Expanded(
           flex: 1,
           child: Padding(
-            padding: EdgeInsets.only(top: 20, left: 20),
+            padding: const EdgeInsets.only(top: 20, left: 20),
             child: Text(
               "Mahsulotlar ro'yhati",
               style: TextStyle(
-                  fontSize: 28,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400),
+                  fontSize: 28, color: whitetext, fontWeight: FontWeight.w400),
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: SizedBox(
-            height: 194,
-            width: 500,
-            child: ListView.builder(
-              itemCount: products.length,
-              itemBuilder: (context, index) {
-                return AddList(
-                  model: products[index],
-                );
-              },
-            ),
-          ),
-        )
+        // Padding(
+        //   padding: const EdgeInsets.only(left: 20, right: 20),
+        //   child: SizedBox(
+        //     height: 194,
+        //     width: 500,
+        //     child: ListView.builder(
+        //       itemCount: products.length,
+        //       itemBuilder: (context, index) {
+        //         return AddList(
+        //           model: products[index],
+        //         );
+        //       },
+        //     ),
+        //   ),
+        // )
       ],
     );
   }
@@ -189,7 +187,7 @@ class _PizzaCircularMenuState extends State<PizzaCircularMenu> {
             products.removeWhere((product) => product.name == topping.id);
           } else {
             // Yangi topping qo'shish
-            products.add(ProductModel(cost: 150, name: topping.id));
+            // products.add(ProductModel(cost: 150, name: topping.id));
           }
         });
       },
@@ -203,7 +201,7 @@ class _PizzaCircularMenuState extends State<PizzaCircularMenu> {
         color: Color(0xFF284E30),
         shape: BoxShape.circle,
       ),
-      child: const Icon(Icons.check_circle, color: Colors.white, size: 48),
+      child: Icon(Icons.check_circle, color: whitetext, size: 48),
     );
   }
 }
@@ -211,23 +209,16 @@ class _PizzaCircularMenuState extends State<PizzaCircularMenu> {
 class AddList extends StatelessWidget {
   const AddList({
     super.key,
-    required this.model,
+    // required this.model,
   });
 
-  final ProductModel model;
+  // final ProductModel model;
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          model.name,
-          style: const TextStyle(color: Colors.white, fontSize: 18),
-        ),
-        Text(
-          model.cost.toString(),
-          style: const TextStyle(color: Colors.white, fontSize: 18),
-        )
+        
       ],
     );
   }

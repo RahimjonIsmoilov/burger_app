@@ -1,10 +1,11 @@
 class Fooddmodel {
-  int? ordercount = 0;
+  int ordercount;
   bool liked;
   final String imgpath;
   final String name;
   final String description;
   final String price;
+  final String category;
   final String weight;
   Fooddmodel({
     required this.imgpath,
@@ -12,7 +13,8 @@ class Fooddmodel {
     required this.description,
     required this.price,
     required this.weight,
-    this.ordercount,
+    required this.category,
+    this.ordercount = 0,
     this.liked = false,
   });
 }

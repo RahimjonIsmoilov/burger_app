@@ -1,5 +1,6 @@
-import 'package:burger_app/enter_page.dart';
-import 'package:burger_app/registration_page.dart';
+import 'package:burger_app/registration_page/enter_page.dart';
+import 'package:burger_app/registration_page/registration_page.dart';
+import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
 class BeginScreen extends StatelessWidget {
@@ -20,31 +21,31 @@ class BeginScreen extends StatelessWidget {
           ),
           child: ListView(
             children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 170),
+              Padding(
+                padding: const EdgeInsets.only(top: 100),
                 child: Text(
                   "BURGER BAR",
                   style: TextStyle(
                     fontSize: 48,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: whitetext,
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 300),
+              Padding(
+                padding: const EdgeInsets.only(top: 300),
                 child: Text(
                   "Вкусный бургер — это то,что вы заслуживаетездесь и сейчас",
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                      color: whitetext),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 32),
                 child: Buttons(
-                  col: const Color.fromARGB(255, 234, 182, 23),
+                  col: maincolor,
                   texcol: Colors.black,
                   tex: "Войти",
                   tap: () {
@@ -60,8 +61,8 @@ class BeginScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: Buttons(
-                  col: Colors.white,
-                  texcol: const Color.fromARGB(255, 234, 182, 23),
+                  col: whitetext,
+                  texcol: maincolor,
                   tex: "Зарегистрироваться",
                   tap: () {
                     Navigator.push(

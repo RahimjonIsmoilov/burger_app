@@ -1,5 +1,5 @@
-import 'package:burger_app/begin_screen.dart';
-import 'package:burger_app/location_page.dart';
+import 'package:burger_app/registration_page/begin_screen.dart';
+import 'package:burger_app/registration_page/location_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
@@ -29,21 +29,21 @@ class FioPage extends StatelessWidget {
                   color: maincolor,
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: const Icon(
+                child:  Icon(
                   Icons.arrow_back,
                   size: 30,
-                  color: Colors.white,
+                  color: whitetext,
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 38, bottom: 20),
+            Padding(
+              padding: const EdgeInsets.only(top: 38, bottom: 20),
               child: Text(
                 "Введите свои инициалы, чтобы продолжить",
                 style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: whitetext),
               ),
             ),
             const Text(
@@ -59,12 +59,12 @@ class FioPage extends StatelessWidget {
                   color: Colors.grey.shade800,
                   borderRadius: BorderRadius.circular(8)),
               child: TextField(
-                  style: const TextStyle(color: Colors.white, fontSize: 14),
+                  style:  TextStyle(color: whitetext, fontSize: 14),
                   cursorColor: maincolor,
                   decoration: InputDecoration(
                       hintText: "Введите имя",
                       hintStyle:
-                          const TextStyle(color: Colors.white, fontSize: 14),
+                          TextStyle(color: whitetext, fontSize: 14),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: maincolor, width: 2)),
                       border: OutlineInputBorder(
@@ -76,12 +76,12 @@ class FioPage extends StatelessWidget {
                   color: Colors.grey.shade800,
                   borderRadius: BorderRadius.circular(8)),
               child: TextField(
-                  style: const TextStyle(color: Colors.white, fontSize: 14),
+                  style:  TextStyle(color: whitetext, fontSize: 14),
                   cursorColor: maincolor,
                   decoration: InputDecoration(
                       hintText: "Введите фамилию",
                       hintStyle:
-                          const TextStyle(color: Colors.white, fontSize: 14),
+                           TextStyle(color: whitetext, fontSize: 14),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: maincolor, width: 2)),
                       border: OutlineInputBorder(

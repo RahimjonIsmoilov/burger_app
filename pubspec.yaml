@@ -29,11 +29,14 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   accordion: ^2.6.0
+  bloc: ^8.1.4
   cupertino_icons: ^1.0.2
   curved_navigation_bar: ^1.0.6
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.6
   flutter_custom_carousel: ^0.1.0+1
+  http: ^1.2.2
 
 dev_dependencies:
 
@@ -60,6 +63,7 @@ flutter:
   assets:
     - images/
     - images/circular_menu/
+    - images/selec_pro/
     - images/pitsa_circiular/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

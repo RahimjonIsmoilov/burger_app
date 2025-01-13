@@ -1,11 +1,28 @@
+
+import 'package:burger_app/main_page/local_date/foods_list.dart';
 import 'package:burger_app/main_page/widgets/food_list.dart';
 import 'package:burger_app/main_page/widgets/foods.dart';
 import 'package:burger_app/profil_page/profil_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
-class FoodPage extends StatelessWidget {
+// ignore: must_be_immutable
+class FoodPage extends StatefulWidget {
   const FoodPage({super.key});
+
+  @override
+  State<FoodPage> createState() => _FoodPageState();
+}
+
+class _FoodPageState extends State<FoodPage> {
+  
+  
+
+  late List<String> uniqueCategories =
+      ["Hammasi"] + foods.map((food) => food.category).toSet().toList();
+
+  int selectedindex = 0;
+  late String category = "Hammasi";
 
   @override
   Widget build(BuildContext context) {
@@ -16,23 +33,22 @@ class FoodPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 30), // Yuqoridan bo'sh joy
-            // User va qidiruv paneli
+            const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   "Привет, Максим",
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                      color: whitetext),
                 ),
                 Row(
                   children: [
                     IconButton(
                       onPressed: () {},
-                      icon: const Icon(Icons.search, color: Colors.white),
+                      icon: Icon(Icons.search, color: whitetext),
                     ),
                     IconButton(
                       onPressed: () {
@@ -53,7 +69,7 @@ class FoodPage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 10), // User va pastki chiziq orasidagi joy
+            const SizedBox(height: 10),
             Container(
               width: double.infinity,
               height: 7,
@@ -63,20 +79,20 @@ class FoodPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            // "Ваши любимые товары" sarlavhasi
-            const Foodlist(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   "Ваши любимые товары",
                   style: TextStyle(
-                      color: Colors.white,
+                      color: whitetext,
                       fontSize: 16,
                       fontWeight: FontWeight.bold),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    
+                  },
                   child: Text(
                     "Посмотреть все",
                     style: TextStyle(color: maincolor),
@@ -84,29 +100,52 @@ class FoodPage extends StatelessWidget {
                 ),
               ],
             ),
+            Foodlist(),
             SizedBox(
               height: 40,
               child: ListView.builder(
-                itemCount: 20,
+                itemCount: uniqueCategories.length,
                 padding: const EdgeInsets.symmetric(vertical: 5),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(10),
+                  final isSelected = selectedindex == index;
+                  return InkWell(
+                    onTap: () {
+                      setState(() {
+                        setState(() {
+                          category = uniqueCategories[index];
+                          selectedindex = index;
+                        });
+                      });
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 1),
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: isSelected ? maincolor : maincol2, width: 1),
+                        color: isSelected ? maincolor : maincol2,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        uniqueCategories[index],
+                        style: TextStyle(
+                          fontWeight:
+                              isSelected ? FontWeight.bold : FontWeight.normal,
+                          color: isSelected ? Colors.black : whitetext,
+                        ),
+                      ),
                     ),
-                    child: const Text('test'),
                   );
                 },
               ),
             ),
-            const Expanded(
-              child: Foods(), // GridView ichida oziq-ovqat kartalari
+            Expanded(
+              child: Foods(
+                categor: category,
+              ), // GridView ichida oziq-ovqat kartalari
             ),
           ],
         ),

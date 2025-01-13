@@ -1,4 +1,4 @@
-import 'package:burger_app/begin_screen.dart';
+import 'package:burger_app/registration_page/begin_screen.dart';
 import 'package:burger_app/main_page/main_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
@@ -20,20 +20,20 @@ class EnterPage extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 103, bottom: 28),
+            Padding(
+              padding: const EdgeInsets.only(top: 103, bottom: 28),
               child: Text(
                 "BURGER BAR",
                 style: TextStyle(
                     fontSize: 52,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: whitetext),
               ),
             ),
-            const Text(
+            Text(
               "Войдите в свой профиль",
               style: TextStyle(
-                color: Colors.white,
+                color: whitetext,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
@@ -47,13 +47,13 @@ class EnterPage extends StatelessWidget {
                   color: Colors.black45,
                   borderRadius: BorderRadius.circular(8)),
               child: TextField(
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  color: whitetext,
                 ),
                 cursorColor: maincolor,
                 decoration: InputDecoration(
                     hintText: "rahimjon@gmail.com",
-                    hintStyle: const TextStyle(color: Colors.white),
+                    hintStyle: TextStyle(color: whitetext),
                     prefixIcon: Icon(
                       Icons.send_rounded,
                       color: maincolor,
@@ -70,13 +70,13 @@ class EnterPage extends StatelessWidget {
                   color: Colors.black45,
                   borderRadius: BorderRadius.circular(8)),
               child: TextField(
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  color: whitetext,
                 ),
                 cursorColor: maincolor,
                 decoration: InputDecoration(
                     hintText: "* * * * * * * *",
-                    hintStyle: const TextStyle(color: Colors.white),
+                    hintStyle: TextStyle(color: whitetext),
                     prefixIcon: Icon(
                       Icons.shield_rounded,
                       color: maincolor,
@@ -96,12 +96,12 @@ class EnterPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8))),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 33, bottom: 45),
+            Padding(
+              padding: const EdgeInsets.only(top: 33, bottom: 45),
               child: Text(
                 "Или продолжите с помощью  ",
                 style: TextStyle(
-                    color: Colors.white,
+                    color: whitetext,
                     fontSize: 14,
                     fontWeight: FontWeight.w500),
               ),
@@ -125,12 +125,12 @@ class EnterPage extends StatelessWidget {
                           color: maincolor,
                           size: 30,
                         ),
-                        const Text(
+                        Text(
                           "  Facebook",
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Colors.white),
+                              color: whitetext),
                         )
                       ],
                     ),
@@ -152,12 +152,12 @@ class EnterPage extends StatelessWidget {
                           color: maincolor,
                           size: 48,
                         ),
-                        const Text(
+                        Text(
                           "Google",
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Colors.white),
+                              color: whitetext),
                         )
                       ],
                     ),
