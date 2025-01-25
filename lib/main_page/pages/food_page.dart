@@ -1,10 +1,10 @@
-
-import 'package:burger_app/main_page/local_date/foods_list.dart';
+import 'package:burger_app/main_page/bloc/food_bloc.dart';
 import 'package:burger_app/main_page/widgets/food_list.dart';
 import 'package:burger_app/main_page/widgets/foods.dart';
 import 'package:burger_app/profil_page/profil_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: must_be_immutable
 class FoodPage extends StatefulWidget {
@@ -15,12 +15,6 @@ class FoodPage extends StatefulWidget {
 }
 
 class _FoodPageState extends State<FoodPage> {
-  
-  
-
-  late List<String> uniqueCategories =
-      ["Hammasi"] + foods.map((food) => food.category).toSet().toList();
-
   int selectedindex = 0;
   late String category = "Hammasi";
 
@@ -90,9 +84,7 @@ class _FoodPageState extends State<FoodPage> {
                       fontWeight: FontWeight.bold),
                 ),
                 TextButton(
-                  onPressed: () {
-                    
-                  },
+                  onPressed: () {},
                   child: Text(
                     "Посмотреть все",
                     style: TextStyle(color: maincolor),
@@ -102,46 +94,65 @@ class _FoodPageState extends State<FoodPage> {
             ),
             Foodlist(),
             SizedBox(
-              height: 40,
-              child: ListView.builder(
-                itemCount: uniqueCategories.length,
-                padding: const EdgeInsets.symmetric(vertical: 5),
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  final isSelected = selectedindex == index;
-                  return InkWell(
-                    onTap: () {
-                      setState(() {
-                        setState(() {
-                          category = uniqueCategories[index];
-                          selectedindex = index;
-                        });
-                      });
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 5, vertical: 1),
-                      padding: const EdgeInsets.symmetric(horizontal: 4),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: isSelected ? maincolor : maincol2, width: 1),
-                        color: isSelected ? maincolor : maincol2,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        uniqueCategories[index],
-                        style: TextStyle(
-                          fontWeight:
-                              isSelected ? FontWeight.bold : FontWeight.normal,
-                          color: isSelected ? Colors.black : whitetext,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
+                height: 40,
+                child: BlocBuilder<FoodBloc, FoodState>(
+                  builder: (context, state) {
+                    if (state is FoodSucces) {
+                      final productList = state.productList;
+                      if (productList.isEmpty) {
+                        return const Center(
+                            child: Text("Mahsulotlar mavjud emas"));
+                      }
+
+                      late List<String> uniqueCategories = ["Hammasi"] +
+                          productList
+                              .map((product) => product.category?.name ?? '')
+                              .toSet()
+                              .toList();
+
+                      return ListView.builder(
+                        itemCount: uniqueCategories.length,
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          final isSelected = selectedindex == index;
+                          return InkWell(
+                            onTap: () {
+                              setState(() {
+                                category = uniqueCategories[index];
+                                selectedindex = index;
+                              });
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(
+                                  horizontal: 5, vertical: 1),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 4),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: isSelected ? maincolor : maincol2,
+                                    width: 1),
+                                color: isSelected ? maincolor : maincol2,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Text(
+                                uniqueCategories[index],
+                                style: TextStyle(
+                                  fontWeight: isSelected
+                                      ? FontWeight.bold
+                                      : FontWeight.normal,
+                                  color: isSelected ? Colors.black : whitetext,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    }
+                    return const Center(child: LinearProgressIndicator());
+                  },
+                )),
             Expanded(
               child: Foods(
                 categor: category,

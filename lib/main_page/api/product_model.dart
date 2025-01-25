@@ -61,6 +61,8 @@ class ProductModel {
     }
     return data;
   }
+
+  map(Function(dynamic food) param0) {}
 }
 
 class Category {
@@ -80,6 +82,8 @@ class Category {
     image = json['image'];
   }
 
+
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
@@ -89,4 +93,6 @@ class Category {
     data['image'] = image;
     return data;
   }
+
+  map(Function(dynamic food) param0) {}
 }

@@ -1,5 +1,5 @@
 import 'package:burger_app/registration_page/begin_screen.dart';
-import 'package:burger_app/registration_page/enter_page.dart';
+import 'package:burger_app/registration_page/login_page.dart';
 import 'package:burger_app/registration_page/fio_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
@@ -163,7 +163,7 @@ class RegistrationPage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const EnterPage(),
+                            builder: (context) =>  LoginPage(),
                           ),
                         );
                       },

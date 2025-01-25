@@ -1,4 +1,4 @@
-import 'package:burger_app/registration_page/enter_page.dart';
+import 'package:burger_app/registration_page/login_page.dart';
 import 'package:burger_app/registration_page/registration_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +52,7 @@ class BeginScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const EnterPage(),
+                        builder: (context) => LoginPage(),
                       ),
                     );
                   },

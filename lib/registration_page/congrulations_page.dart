@@ -1,5 +1,5 @@
 import 'package:burger_app/registration_page/begin_screen.dart';
-import 'package:burger_app/registration_page/enter_page.dart';
+import 'package:burger_app/registration_page/login_page.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +43,7 @@ class CongrulationsPage extends StatelessWidget {
                   tap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const EnterPage(),
+                        builder: (context) => LoginPage(),
                       ),
                     );
                   }),
