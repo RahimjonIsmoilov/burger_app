@@ -18,7 +18,7 @@ class ProductRepository {
         throw Exception("Server error error code ${res.statusCode}");
       }
     } catch (e) {
-      throw Exception("Server error ${e}");
+      throw Exception("Server error $e");
     }
   return productList;
   }
