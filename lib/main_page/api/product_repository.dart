@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 class ProductRepository {
   Future<List<ProductModel>> getData()async{
     List<ProductModel> productList=[];
-    final url = Uri.parse("http://167.235.222.200:2003/product/get");
+    final url = Uri.parse("http://127.0.0.1:3001/products");
     try {
       final res = await http.get(url);
       final resData = json.decode(utf8.decode(res.bodyBytes));
