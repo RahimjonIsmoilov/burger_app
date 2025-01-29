@@ -1,6 +1,7 @@
 import 'package:burger_app/registration_page/login_page.dart';
 import 'package:burger_app/registration_page/registration_page.dart';
 import 'package:burger_app/varible.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BeginScreen extends StatelessWidget {
@@ -89,11 +90,13 @@ class Buttons extends StatelessWidget {
     required this.texcol,
     required this.tex,
     required this.tap,
+    this.isLoading = false,
   });
   final Function tap;
   final String tex;
   final Color texcol;
   final Color col;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -110,14 +113,16 @@ class Buttons extends StatelessWidget {
         ),
         child: Align(
           alignment: Alignment.center,
-          child: Text(
-            tex,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: texcol,
-            ),
-          ),
+          child: !isLoading
+              ? Text(
+                  tex,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: texcol,
+                  ),
+                )
+              : const CupertinoActivityIndicator(),
         ),
       ),
     );

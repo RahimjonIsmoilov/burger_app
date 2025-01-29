@@ -8,20 +8,29 @@ part 'user_event.dart';
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
-
-  
   UserBloc() : super(UserInitial()) {
-    on<UserEvent>((event, emit) {
-      
-    });
+    on<UserEvent>((event, emit) {});
 
     on<UserLoadingData>((event, emit) async {
       emit(UserLoading());
       try {
         final result = await UserRepository().getData();
-        if (result!=[] ) {
-          emit(UserSucces(userList: result));
-        }else{
+        if (result != []) {
+          emit(UserSuccess(userList: result));
+        } else {
+          emit(UserError());
+        }
+      } catch (e) {
+        emit(UserError());
+      }
+    });
+    on<UserLoginEvent>((event, emit) async {
+      emit(UserLoading());
+      try {
+        final result = await UserRepository().login(event.model);
+        if (result) {
+          emit(UserSuccess());
+        } else {
           emit(UserError());
         }
       } catch (e) {

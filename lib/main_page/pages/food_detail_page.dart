@@ -1,3 +1,4 @@
+import 'package:burger_app/core/extensions/str_ext.dart';
 import 'package:burger_app/main_page/api/product_model.dart';
 import 'package:burger_app/main_page/bloc/food_bloc.dart';
 import 'package:burger_app/varible.dart';
@@ -58,7 +59,8 @@ class _FoodDetailState extends State<FoodDetail> {
                       padding: const EdgeInsets.only(top: 50),
                       child: Image(
                         image: NetworkImage(
-                            state.productList[widget.index].imgpath!),
+                          state.productList[widget.index].bigImage.image,
+                        ),
                         width: screenWidth,
                         height: screenHeight * 0.4,
                         fit: BoxFit.cover,

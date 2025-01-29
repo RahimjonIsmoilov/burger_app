@@ -1,3 +1,4 @@
+import 'package:burger_app/registration_page/api/user_model.dart';
 import 'package:burger_app/registration_page/begin_screen.dart';
 import 'package:burger_app/main_page/main_page.dart';
 import 'package:burger_app/registration_page/bloc/user_bloc.dart';
@@ -17,15 +18,17 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
-    BlocProvider.of<UserBloc>(context).add(UserLoadingData());
+    // BlocProvider.of<UserBloc>(context).add(UserLoadingData());
     super.initState();
   }
 
-  late Color errortextcolor = whitetext;
+  late Color errorTextColor = whitetext;
 
-  final TextEditingController login = TextEditingController();
+  final TextEditingController login =
+      TextEditingController(text: "rahimjon@gmail.com");
 
-  final TextEditingController password = TextEditingController();
+  final TextEditingController password =
+      TextEditingController(text: "rahimjon");
 
   void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
@@ -118,7 +121,21 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: BlocBuilder<UserBloc, UserState>(
+      body: BlocConsumer<UserBloc, UserState>(
+        listener: (context, state) {
+          if (state is UserSuccess) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const MainPage(),
+              ),
+            );
+          } else {
+            setState(() {
+              errorTextColor = Colors.red;
+            });
+          }
+        },
         builder: (context, state) {
           return Container(
             padding: const EdgeInsets.only(left: 25, right: 25),
@@ -148,14 +165,19 @@ class _LoginPageState extends State<LoginPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const Text("Войдите, чтобы продолжить",
-                    style: TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.w400)),
+                const Text(
+                  "Войдите, чтобы продолжить",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
                 Container(
                   margin: const EdgeInsets.only(top: 48, bottom: 21),
                   decoration: BoxDecoration(
-                      color: Colors.black45,
-                      borderRadius: BorderRadius.circular(8)),
+                    color: Colors.black45,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                   child: TextField(
                     controller: login,
                     style: TextStyle(
@@ -163,23 +185,30 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     cursorColor: maincolor,
                     decoration: InputDecoration(
-                        hintText: "rahimjon@gmail.com",
-                        hintStyle: TextStyle(color: errortextcolor),
-                        prefixIcon: Icon(
-                          Icons.send_rounded,
+                      hintText: "rahimjon@gmail.com",
+                      hintStyle: TextStyle(color: errorTextColor),
+                      prefixIcon: Icon(
+                        Icons.send_rounded,
+                        color: maincolor,
+                        size: 24,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
                           color: maincolor,
-                          size: 24,
+                          width: 2,
                         ),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: maincolor, width: 2)),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8))),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
                   ),
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: Colors.black45,
-                      borderRadius: BorderRadius.circular(8)),
+                    color: Colors.black45,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                   child: TextField(
                     controller: password,
                     style: TextStyle(
@@ -187,25 +216,28 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     cursorColor: maincolor,
                     decoration: InputDecoration(
-                        hintText: "* * * * * * * *",
-                        hintStyle: TextStyle(color: errortextcolor),
-                        prefixIcon: Icon(
-                          Icons.shield_rounded,
+                      hintText: "* * * * * * * *",
+                      hintStyle: TextStyle(color: errorTextColor),
+                      prefixIcon: Icon(
+                        Icons.shield_rounded,
+                        color: maincolor,
+                        size: 24,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.remove_red_eye,
                           color: maincolor,
                           size: 24,
                         ),
-                        suffixIcon: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.remove_red_eye,
-                            color: maincolor,
-                            size: 24,
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: maincolor, width: 2)),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8))),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: maincolor, width: 2),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(
@@ -226,13 +258,22 @@ class _LoginPageState extends State<LoginPage> {
                   col: maincolor,
                   texcol: Colors.black,
                   tex: "Войти",
+                  isLoading: state is UserLoading,
                   tap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const MainPage(),
-                      ),
-                    );
+                    context.read<UserBloc>().add(
+                          UserLoginEvent(
+                            model: UserModel(
+                              email: login.text,
+                              password: password.text,
+                            ),
+                          ),
+                        );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => const MainPage(),
+                    //   ),
+                    // );
                     // if (state is UserSucces) {
                     // Navigator.push(
                     //   context,
@@ -255,4 +296,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-

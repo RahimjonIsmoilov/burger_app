@@ -1,3 +1,4 @@
+import 'package:burger_app/core/extensions/str_ext.dart';
 import 'package:burger_app/main_page/api/product_model.dart';
 import 'package:burger_app/main_page/pages/food_detail_page.dart';
 import 'package:burger_app/varible.dart';
@@ -6,10 +7,10 @@ import 'package:flutter/material.dart';
 class FoodCard extends StatelessWidget {
   const FoodCard({
     super.key,
-    required this.productmodel,
+    required this.productModel,
     required this.index,
   });
-  final ProductModel productmodel;
+  final ProductModel productModel;
   final int index;
 
   @override
@@ -20,7 +21,7 @@ class FoodCard extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => FoodDetail(
-              productmodel: productmodel,
+              productmodel: productModel,
               index: index,
             ),
           ),
@@ -42,8 +43,8 @@ class FoodCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: Image.asset(
-                "${productmodel.imgpath}",
+              child: Image.network(
+                productModel.bigImage.image,
                 width: 150,
                 height: 120,
                 errorBuilder: (context, error, stackTrace) {
@@ -56,16 +57,18 @@ class FoodCard extends StatelessWidget {
               ),
             ),
             Text(
-              productmodel.name!,
+              productModel.name!,
               maxLines: 1,
               style: TextStyle(
-                  fontSize: 18, fontWeight: FontWeight.bold, color: whitetext),
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: whitetext,
+              ),
             ),
             SizedBox(
               width: 145,
-              height: 50,
               child: Text(
-                productmodel.name!,
+                productModel.name!,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 3,
                 style: const TextStyle(
@@ -79,7 +82,7 @@ class FoodCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "${productmodel.price}",
+                  "${productModel.price}",
                   style: TextStyle(
                       color: whitetext,
                       fontSize: 16,
@@ -93,7 +96,7 @@ class FoodCard extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(16))),
                   child: Center(
                     child: Text(
-                      "${productmodel.price} g",
+                      "${productModel.price} g",
                       style: TextStyle(
                           fontSize: 9,
                           fontWeight: FontWeight.bold,

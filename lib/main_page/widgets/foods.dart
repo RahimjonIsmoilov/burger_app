@@ -66,7 +66,7 @@ class _FoodsState extends State<Foods> {
                 ),
                 itemBuilder: (BuildContext context, int index) {
                   return FoodCard(
-                    productmodel: state.productList[index],
+                    productModel: state.productList[index],
                     index: index,
                   );
                 },
