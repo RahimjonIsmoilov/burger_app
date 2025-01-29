@@ -1,7 +1,8 @@
 import 'package:burger_app/main_page/local_date/foods_list.dart';
 import 'package:burger_app/main_page/models/fooddmodel.dart';
-import 'package:burger_app/main_page/pages/pitsa_carousel.dart';
+import 'package:burger_app/main_page/pages/payment_page.dart';
 import 'package:burger_app/main_page/widgets/orders.dart';
+import 'package:burger_app/registration_page/begin_screen.dart';
 import 'package:burger_app/varible.dart';
 import 'package:flutter/material.dart';
 
@@ -110,52 +111,41 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                         ],
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Общая стоимость",
-                          style: TextStyle(
-                              color: whitetext,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "$totalprice So'm",
-                          style: TextStyle(
-                              color: whitetext,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const PizzaCircularMenu(),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        margin: const EdgeInsets.only(top: 24),
-                        height: 48,
-                        width: screenWidth * 0.7,
-                        decoration: BoxDecoration(
-                          color: maincolor,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "To'lov",
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Общая стоимость",
                             style: TextStyle(
-                                color: maincol1,
-                                fontSize: 20,
+                                color: whitetext,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold),
                           ),
-                        ),
+                          Text(
+                            "$totalprice So'm",
+                            style: TextStyle(
+                                color: whitetext,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
+                    ),
+                    SizedBox(
+                      height: 50,
+                      child: Buttons(
+                          col: maincolor,
+                          texcol: maincol1,
+                          tex: "To'lov",
+                          tap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PaymentScreen(),
+                                ));
+                          }),
                     )
                   ],
                 ),
