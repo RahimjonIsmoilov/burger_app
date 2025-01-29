@@ -58,7 +58,7 @@ class _FoodDetailState extends State<FoodDetail> {
                       padding: const EdgeInsets.only(top: 50),
                       child: Image(
                         image: NetworkImage(
-                            state.productList[widget.index].image!),
+                            state.productList[widget.index].imgpath!),
                         width: screenWidth,
                         height: screenHeight * 0.4,
                         fit: BoxFit.cover,
@@ -145,7 +145,7 @@ class _FoodDetailState extends State<FoodDetail> {
                               ),
                             ),
                             Text(
-                              "${state.productList[widget.index].amount} g",
+                              "${state.productList[widget.index].weight} g",
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
@@ -209,7 +209,7 @@ class _FoodDetailState extends State<FoodDetail> {
                                     fontSize: 14),
                               ),
                               Text(
-                                "${(state.productList[widget.index].price! * son).toStringAsFixed(2)} So'm",
+                                "${(state.productList[widget.index].price! * son)} So'm",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: whitetext,

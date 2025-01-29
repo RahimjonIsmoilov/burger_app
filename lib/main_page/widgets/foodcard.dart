@@ -42,8 +42,8 @@ class FoodCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: Image.network(
-                "http://167.235.222.200:2003/images/${productmodel.image}",
+              child: Image.asset(
+                "${productmodel.imgpath}",
                 width: 150,
                 height: 120,
                 errorBuilder: (context, error, stackTrace) {

@@ -106,7 +106,7 @@ class _FoodPageState extends State<FoodPage> {
 
                       late List<String> uniqueCategories = ["Hammasi"] +
                           productList
-                              .map((product) => product.category?.name ?? '')
+                              .map((product) => product.category ?? '')
                               .toSet()
                               .toList();
 

@@ -43,6 +43,7 @@ class CongrulationsPage extends StatelessWidget {
                   tap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
+                        // ignore: prefer_const_constructors
                         builder: (context) => LoginPage(),
                       ),
                     );
