@@ -32,9 +32,6 @@ class UserRepository {
     try {
       final res = await http.post(
         url,
-        headers: {
-          "Content-Type": "application/json",
-        },
         body: {
           "username": model.email,
           "password": model.password,
