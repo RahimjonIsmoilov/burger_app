@@ -1,22 +1,18 @@
 import 'package:bloc/bloc.dart';
 import 'package:burger_app/registration_page/api/user_model.dart';
 import 'package:burger_app/registration_page/api/user_repository.dart';
-// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
-
 part 'user_event.dart';
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc() : super(UserInitial()) {
-    on<UserEvent>((event, emit) {});
-
-    on<UserLoadingData>((event, emit) async {
+    on<UserRegisterEvent>((event, emit) async {
       emit(UserLoading());
       try {
-        final result = await UserRepository().getData();
-        if (result != []) {
-          emit(UserSuccess(userList: result));
+        final result = await UserRepository().registration(event.model);
+        if (result) {
+          emit(UserSuccess());
         } else {
           emit(UserError());
         }
@@ -24,6 +20,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         emit(UserError());
       }
     });
+
     on<UserLoginEvent>((event, emit) async {
       emit(UserLoading());
       try {

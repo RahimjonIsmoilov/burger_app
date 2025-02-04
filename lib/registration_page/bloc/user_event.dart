@@ -12,6 +12,11 @@ class UserLoginEvent extends UserEvent {
   UserLoginEvent({required this.model});
 }
 
+class UserRegisterEvent extends UserEvent {
+  final UserModel model;
+  UserRegisterEvent({required this.model});
+}
+
 class GetLocaleUserdata extends UserEvent {
   GetLocaleUserdata();
 }

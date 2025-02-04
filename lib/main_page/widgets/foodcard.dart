@@ -30,11 +30,7 @@ class FoodCard extends StatelessWidget {
       child: Container(
         height: 220,
         width: 160,
-        padding: const EdgeInsets.only(
-          top: 6,
-          left: 14,
-          right: 14,
-        ),
+        padding: const EdgeInsets.only(top: 6, left: 14, right: 14, bottom: 5),
         decoration: BoxDecoration(
           color: maincol2,
           borderRadius: const BorderRadius.all(Radius.circular(16)),
@@ -68,7 +64,7 @@ class FoodCard extends StatelessWidget {
             SizedBox(
               width: 145,
               child: Text(
-                productModel.name!,
+                productModel.description!,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 3,
                 style: const TextStyle(
@@ -78,6 +74,7 @@ class FoodCard extends StatelessWidget {
                 ),
               ),
             ),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

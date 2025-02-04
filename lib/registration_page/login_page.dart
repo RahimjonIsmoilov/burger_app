@@ -179,9 +179,14 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        errorTextColor = whitetext;
+                      });
+                    },
                     controller: login,
                     style: TextStyle(
-                      color: whitetext,
+                      color: errorTextColor,
                     ),
                     cursorColor: maincolor,
                     decoration: InputDecoration(
@@ -210,9 +215,14 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        errorTextColor = whitetext;
+                      });
+                    },
                     controller: password,
                     style: TextStyle(
-                      color: whitetext,
+                      color: errorTextColor,
                     ),
                     cursorColor: maincolor,
                     decoration: InputDecoration(
